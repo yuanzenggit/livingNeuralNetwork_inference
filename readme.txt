@@ -12,8 +12,8 @@ Reproduce the result:
 2) Accuracy comparison between biophysical and computational model experiment under: 2_accuracyCompare 
 	 -> python3 ./2_accuracyCompare/result/plot/graph.py to generate Fig 4(c)
 	 -> To generate the raw data
-		-> python3 ./2_accuracyCompare/tensorflow_compModel.py to get computational model result
-	 	-> python3 ./2_accuracyCompare/biophy/run.sh to get biophysical model result
+	  -> python3 ./2_accuracyCompare/tensorflow_compModel.py to get computational model result
+	  -> python3 ./2_accuracyCompare/biophy/run.sh to get biophysical model result
 
 3) Computational model optimization experiment under: 3_optimization
 	 -> python3 ./3_optimization/result/sparse/graph.py to generate Fig 5(a)
@@ -22,7 +22,7 @@ Reproduce the result:
 	 -> python3 ./3_optimization/result/compression/graph.py to generate Fig 5(d)
 	 -> python3 ./3_optimization/result/estimator/graph.py to generate Fig 5(e)
 	 -> To generate the raw data
-	 	-> python3 ./3_optimization/tensorflow_compModel.py, set the parameters according to each experiment
+	  -> python3 ./3_optimization/tensorflow_compModel.py, set the parameters according to each experiment
 
 4) Neural variation study experiment under: 4_variationStudy
 	 -> python3 ./4_variationStudy/fullMnist_result/graph.py to generate Fig 6(a)
@@ -30,5 +30,5 @@ Reproduce the result:
 	 -> python3 ./4_variationStudy/weightVariation/graph.py to generate Fig 6(c)
 	 -> python3 ./4_variationStudy/weightConstraint/graph.py to generate Fig 6(d)
 	 -> To generate the raw data
-	 	-> python3 ./4_variationStudy/tensorflow_compModel.py, set the parameters according to each experiment
+	  -> python3 ./4_variationStudy/tensorflow_compModel.py, set the parameters according to each experiment
 
