@@ -16,8 +16,8 @@ training_epochs, batch_size = 1, 1
 train_cap, test_cap = 60000, 10000
 datalen_train, datalen_test, dim = 60000, 10000, 14
 n_input, n_hidden_1, n_classes = dim*dim, 2000, 10
-Vth_mean, Vth_std = 0.0066, 0.0019 #0.0062, 0.0018 #0.0058, 0.0017
-w1_mean, w1_std = 0.0009, 0.0009 #0.0009, 0.0009 #0.0007, 0.0007
+Vth_mean, Vth_std = 0.0066, 0.0019 
+w1_mean, w1_std = 0.0009, 0.0009 
 w2_mean, w2_std = 0.0009, 0.03 
 learning_rate1, learning_rate2, decay = 0.00001, 0.1, -0.2
 estimatorL, estimatorU = 0.0057, 0.0075
@@ -27,8 +27,8 @@ last_accuracy=0.0
 # Import MNIST data////////////////////////////////////////////////
 if preprocessingOn:
 		# Preprocessing
-		name_train='../MNIST/pre_processing/MNIST/'+'S_train_ones'+str(expect_ones)+'_dim'+str(dim)+'_datalength'+str(train_cap)
-		name_test='../MNIST/pre_processing/MNIST/'+'S_test_ones'+str(expect_ones)+'_dim'+str(dim)+'_datalength'+str(test_cap)
+		name_train='../MNIST/pre_processing/'+'S_train_ones'+str(expect_ones)+'_dim'+str(dim)+'_datalength'+str(train_cap)
+		name_test='../MNIST/pre_processing/'+'S_test_ones'+str(expect_ones)+'_dim'+str(dim)+'_datalength'+str(test_cap)
 
 else:
 		# Original compression

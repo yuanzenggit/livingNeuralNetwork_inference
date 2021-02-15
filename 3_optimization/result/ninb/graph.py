@@ -13,10 +13,6 @@ for i in range (len(path)):
 	for j in range (len(files)):
 		index.append([str(files[j]).split(" ")[20].strip('],'), files[j]])
 		index=sorted(index)
-	#index1=[0]*len(index)
-	#index1[0]=index[0]
-	#index1[1:9]=index[2:]
-	#index1[9]=index[1]
 		
 	total=[] 
 	spike=[]
@@ -43,33 +39,17 @@ for i in range (len(path)):
 									name.append([int(float(str(ind[0]))),int(float(str(line).split(" ")[8].strip()))])
 			total.append(a)
 			spike.append(b)
-			#name.append(ind[0])
 			f.close()
 
 	plt.figure(figsize=(5,8))
-	#plt.subplot(121)
 	for i in range (len(total)):
 		plt.plot(count,total[i],label=name[i])
 		#plt.ylabel('Accuracy (%)', size=20)
 		#plt.xlabel('Epoch', size=20)
 		plt.xticks(fontsize=20)
-		#x_ticks=np.arange(0,22,1)
 		y_ticks=np.arange(0,1.2,0.1)
-		#y_ticks=np.arange(0,100,5)
-		#plt.xticks(x_ticks)
 		plt.yticks(y_ticks, fontsize=20)
 	plt.legend(loc=4, bbox_to_anchor=(0.9,0), ncol=1, fontsize=20)	
-
-	#plt.subplot(122)
-	#for i in range (len(total)):
-		#plt.plot(count,spike[i],label=name[i])
-		#plt.ylabel('Nf_hidden (%)', size=20)
-		#plt.xlabel('Epoch', size=20)
-		#y_ticks=np.arange(0,110,10)
-		#plt.xticks(fontsize=20)
-		#plt.yticks(y_ticks, fontsize=20)
-	#plt.legend(loc=4,ncol=1, fontsize=20)
-	#plt.tight_layout()
 
 	plt.show()
 

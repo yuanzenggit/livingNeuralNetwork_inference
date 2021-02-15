@@ -14,7 +14,7 @@ preprocessingOn, estimatorOn, adlrOn, privatewOn, seed, sparsity = 0, 0, 0, 1, 2
 display_step = 0  #0: print each figure result, 1: print epoch result
 training_epochs, batch_size = 1, 1
 train_cap, test_cap = 60000, 10000
-datalen_train, datalen_test, dim = 100, 100, 14 #60000, 10000, 14
+datalen_train, datalen_test, dim = 100, 100, 14 
 n_input, n_hidden_1, n_classes = dim*dim, 100, 10
 Vth_mean, Vth_std = 0.0066, 0.0019 
 w1_mean, w1_std = 0.0009, 0.0009 
@@ -27,12 +27,12 @@ last_accuracy=0.0
 # Import MNIST data////////////////////////////////////////////////
 if preprocessingOn:
 		# Preprocessing
-		name_train='./MNIST/pre_processing/MNIST/'+'S_train_ones'+str(expect_ones)+'_dim'+str(dim)+'_datalength'+str(train_cap)
-		name_test='./MNIST/pre_processing/MNIST/'+'S_test_ones'+str(expect_ones)+'_dim'+str(dim)+'_datalength'+str(test_cap)
+		name_train='../MNIST/pre_processing/'+'S_train_ones'+str(expect_ones)+'_dim'+str(dim)+'_datalength'+str(train_cap)
+		name_test='../MNIST/pre_processing/'+'S_test_ones'+str(expect_ones)+'_dim'+str(dim)+'_datalength'+str(test_cap)
 else:
 		# Original compression
-		name_train='./MNIST/input196_training.mat'
-		name_test='./MNIST/input196_testing.mat'
+		name_train='../MNIST/input196_training.mat'
+		name_test='../MNIST/input196_testing.mat'
 
 vals=sio.loadmat(name_train)
 images1, indexs1 = vals['images'], vals['indexs']

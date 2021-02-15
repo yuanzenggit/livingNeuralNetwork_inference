@@ -2,10 +2,9 @@ from neuron import h
 import scipy.io as sio
 import numpy as np
 import random 
-import math
 import sys
 from sys import argv
-#from matplotlib import pyplot
+from matplotlib import pyplot
 from random import randint
 import time
 start_time = time.time()
@@ -74,8 +73,8 @@ Numtotal=Numin+Numhidden
 Numsyn=Numin*Numhidden
 LearningRate1=0.0001
 LearningRate2=0.01
-initialW_u2=0.00075
-initialW_s2=0.00077
+initialW_u2=0.0009
+initialW_s2=0.0009
 sparsity=40
 
 #layer two weight
@@ -222,9 +221,6 @@ for j in range (Numhidden):
 			indexCurrent=synapseList[i+j*Numin]
 			weights1[j][i]=glist[indexCurrent]
 			tau[j][i]=tlist[indexCurrent]
-
-for j in range (Numhidden):
-	for i in range (Numin):
 			indexCurrent=delayList[i+j*Numin]
 			delay[j][i]=dlist[indexCurrent]
 

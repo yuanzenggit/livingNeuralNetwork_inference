@@ -23,7 +23,6 @@ for i in range (len(path)):
 		else:
 				index.append([0, files[j], 'Pt'])
 
-		#index.append([str(files[j]).split(" ")[18].strip('],'), files[j]])
 		index=sorted(index)
 		
 	total=[] 
@@ -53,32 +52,14 @@ for i in range (len(path)):
 			f.close()
 
 	plt.figure(figsize=(5,8))
-	#plt.subplot(121)
 	for i in range (len(total)):
 		plt.plot(count,total[i],label=name[i])
 		#plt.ylabel('Accuracy (%)', size=20)
 		#plt.xlabel('Epoch', size=20)
 		plt.xticks(fontsize=20)
-		#x_ticks=np.arange(0,22,1)
 		y_ticks=np.arange(0,1.2,0.1)
-		#y_ticks=np.arange(0,100,5)
-		#plt.xticks(x_ticks)
 		plt.yticks(y_ticks, fontsize=20)
-	#plt.legend(loc=4,ncol=3, fontsize=14)	
 	plt.legend(loc=4, bbox_to_anchor=(1,0), ncol=1, fontsize=19)
-	#plt.tight_layout()
-
-	#plt.subplot(122)
-	#for i in range (len(total)):
-	#	plt.plot(count,spike[i],label=name[i])
-		#plt.ylabel('Nf_hidden (%)', size=20)
-		#plt.xlabel('Epoch', size=20)
-	#	y_ticks=np.arange(0,110,10)
-	#	plt.xticks(fontsize=20)
-	#	plt.yticks(y_ticks, fontsize=20)
-	#plt.legend(loc=4,ncol=1, fontsize=20)
-	#plt.tight_layout()
-
 	plt.show()
 
 

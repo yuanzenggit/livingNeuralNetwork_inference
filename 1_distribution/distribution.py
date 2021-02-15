@@ -1,8 +1,6 @@
 from neuron import h,gui
-import scipy.io as sio
 import numpy 
 import random as random
-import math
 import sys
 from sys import argv
 from matplotlib import pyplot
@@ -31,8 +29,8 @@ gmax_cal=[8E-3,8E-3,8E-3,8E-3,8E-3,8E-3,8E-3,8E-3,8E-3]
 gmax_kcRT03=[2E-2,2E-2,2E-2,2.5E-2,1E-1,2E-1,2E-2,1E-1,2E-2]
 
 #synapse parameters
-delay=[1.8,2,1.3,1.4,2,2,1.3,2,2,2,2,2] 
-glist=[0.00072,0.00041,0.00228,0.00117,0.00021,0.00115,0.00063,0.00069,0.00073,0.00034,0.00059,0.00059] #1-12
+dlist=[1.8,2,1.3,1.4,2,2,1.3,2,2,2,2,2] 
+glist=[0.00072,0.00041,0.00228,0.00117,0.00021,0.00115,0.00063,0.00069,0.00073,0.00034,0.00059,0.00059] 
 tlist=[4.5,6.99,4.75,4.4,6,5.95,6.96,5.75,7.8,4.55,5.7,4.9]
 
 ###############################################################
@@ -128,17 +126,19 @@ for cellnum in range (0,9): #different post synaptic neuron
 						#3. weight initial
 						weights1=[[numpy.random.randn() for row in range(0,Numin)] for col in range(0,Numhidden)]
 						tau=[[numpy.random.randn() for row in range(0,Numin)] for col in range(0,Numhidden)]
-						h.delay=1.8
+						delay=[[numpy.random.randn() for row in range(0,Numin)] for col in range(0,Numhidden)]
 						for j in range (Numhidden):
 								for i in range (Numin):
 										indexCurrent=synapselist[i]
 										weights1[j][i]=glist[indexCurrent]
 										tau[j][i]=tlist[indexCurrent]
+										delay[j][i]=dlist[indexCurrent]
 
 						for j in range (Numhidden):
 								for i in range (Numin):
 										h.weights1[i+j*Numin]=weights1[j][i]
 										h.tau[i+j*Numin]=tau[j][i]
+										h.delay[i+j*Numin]=delay[j][i]
 
 						#4. initial the network
 						h('''

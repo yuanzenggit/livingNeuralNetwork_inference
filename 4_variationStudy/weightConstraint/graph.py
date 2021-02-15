@@ -69,12 +69,8 @@ for i in range (len(path)):
 
 	if i==0:
 		plt.errorbar(count, average, yerr=std, elinewidth=1, ecolor='orange', color='g', fmt='-o', markersize='2', capsize=2, label=name)
-	#if i==1:
-	#	plt.errorbar(count, average, yerr=std, elinewidth=1, ecolor='orange', color='sienna', fmt='-o', markersize='2', capsize=2, label=name)
 	if i==1:
 		plt.errorbar(count, average, yerr=std, elinewidth=1, ecolor='orange', color='b', fmt='-o', markersize='2', capsize=2, label=name)
-	#if i==3:
-	#	plt.errorbar(count, average, yerr=std, elinewidth=1, ecolor='orange', color='black', fmt='-o', markersize='2', capsize=2, label=name)
 	if i==2:
 		plt.errorbar(count, average, yerr=std, elinewidth=1, ecolor='orange', color='r', fmt='-o', markersize='2', capsize=2, label=name)
 	if i==3:

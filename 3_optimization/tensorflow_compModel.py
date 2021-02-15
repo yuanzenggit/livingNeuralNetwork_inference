@@ -14,24 +14,21 @@ preprocessingOn, estimatorOn, adlrOn, privatewOn, seed, sparsity = 1, 1, 0, 1, 0
 display_step = 1  #0: print each figure result, 1: print epoch result
 training_epochs, batch_size = 100, 1
 train_cap, test_cap =60000, 10000
-datalen_train, datalen_test, dim = 1000, 1000, 14 #60000, 10000, 14
+datalen_train, datalen_test, dim = 1000, 1000, 14 
 n_input, n_hidden_1, n_classes = dim*dim, 100, 10
-Vth_mean, Vth_std = 0.0066, 0.0019 #0.0062, 0.0018 #0.0058, 0.0017
-w1_mean, w1_std = 0.0009, 0.0009 #0.0007, 0.0007
+Vth_mean, Vth_std = 0.0066, 0.0019 
+w1_mean, w1_std = 0.0009, 0.0009 
 w2_mean, w2_std = 0.0009, 0.03 
 learning_rate1, learning_rate2, decay = 0.000005, 0.008, 0 #0.00001, 0.1, -0.1
 estimatorL, estimatorU = 0, 1000
-expect_ones=16.0
+expect_ones=20.0
 last_accuracy=0.0
 
 # Import MNIST data////////////////////////////////////////////////
 if preprocessingOn:
 		# Preprocessing
-		name_train='../MNIST/pre_processing/MNIST/'+'S_train_ones'+str(expect_ones)+'_dim'+str(dim)+'_datalength'+str(60000)
-		name_test='../MNIST/pre_processing/MNIST/'+'S_test_ones'+str(expect_ones)+'_dim'+str(dim)+'_datalength'+str(10000)
-		#name_train='./data/train_ones20_dim14_datalength1000_unit2_stride2_pad0.mat'
-		#name_test='./data/train_ones20_dim14_datalength1000_unit2_stride2_pad0.mat'
-
+		name_train='../MNIST/pre_processing/'+'S_train_ones'+str(expect_ones)+'_dim'+str(dim)+'_datalength'+str(60000)
+		name_test='../MNIST/pre_processing/'+'S_test_ones'+str(expect_ones)+'_dim'+str(dim)+'_datalength'+str(10000)
 else:
 		# Original compression
 		name_train='../MNIST/input196_training.mat'
@@ -186,8 +183,6 @@ with tf.Session(config=tf.ConfigProto(allow_soft_placement=True,gpu_options = tf
 							if i==99:
 									sp=spikeplot.SpikePlot(marker='.')
 									sp.plot_spikes(printout)
-
-						
 
 						# Accuracy for each images 
 						if p==t:

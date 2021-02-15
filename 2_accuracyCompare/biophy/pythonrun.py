@@ -2,7 +2,7 @@ import subprocess
 import scipy.io as sio
 from sys import argv
 
-iteration=1
+iteration=100
 datalength=100
 name=argv[1]
 seed1=argv[2] #task number

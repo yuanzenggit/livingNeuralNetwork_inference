@@ -1,4 +1,4 @@
-//network model: fully connected, only exitatory neuron
+//network model: fully connected, only exitatory synapse
 
 load_file("neuronTemp_pr.hoc")
 

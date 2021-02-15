@@ -30,7 +30,6 @@ for i in range (len(path)):
 			b=[]
 			count=[]
 			n=0
-			#name.append(ind[0])
 			for line in f:
 					if n==201:
 						break
@@ -45,38 +44,19 @@ for i in range (len(path)):
 			
 			total.append(a)
 			spike.append(b)
-			#name.append([ind[0],float(str(line).split(" ")[8].strip())])
 			f.close()
 
 
 	plt.figure(figsize=(5,8))
-	#plt.subplot(121)
 	for i in range (len(total)):
 		plt.plot(count,total[i],label=name[i])
 		#plt.ylabel('Accuracy (%)', size=20)
 		#plt.xlabel('Epoch', size=20)
 		plt.xticks(fontsize=20)
-		#x_ticks=np.arange(0,22,1)
 		y_ticks=np.arange(0,1.12,0.1)
-		#y_ticks=np.arange(0,100,5)
-		#plt.xticks(x_ticks)
 		plt.yticks(y_ticks, fontsize=20)
-	#plt.legend(loc=4,ncol=3, fontsize=14)	
 	plt.legend(loc=4,bbox_to_anchor=(0.9,0),ncol=1, fontsize=20)
 	plt.show()
-
-	#plt.subplot(122)
-	#for i in range (len(total)):
-		#plt.plot(count,spike[i],label=name[i])
-		#plt.ylabel('Nf_hidden (%)', size=20)
-		#plt.xlabel('Epoch', size=20)
-	#	y_ticks=np.arange(0,110,10)
-	#	plt.xticks(fontsize=20)
-	#	plt.yticks(y_ticks, fontsize=20)
-	#plt.legend(loc=4,ncol=1, fontsize=20)
-	#plt.tight_layout()
-
-	#plt.show()
 
 
 
