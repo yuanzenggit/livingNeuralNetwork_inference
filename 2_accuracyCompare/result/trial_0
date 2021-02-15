@@ -1,0 +1,203 @@
+epochs:100 batchsize:1 networksize:[196, 100, 10] initialW:[0.0009, 0.0009, 0.0009, 0.0009]
+P:40.000000 V:[0.0066, 0.0019] L:[0.0001, 0.01] U:[0.0009, 0.0009] S:[0.0009, 0.0009] M:0.001400 D:[0.1, 0.1]
+preprocessing:0 estimatorOn:0 privatewOn:1 adlrOn:0 
+train epochs:0 accur: 14.000000 snum: 77.050000 cost: 2.366472
+ test epochs:0 accur: 0.480000 snum: 77.050000 
+train epochs:1 accur: 25.000000 snum: 76.460000 cost: 2.109002
+ test epochs:1 accur: 0.560000 snum: 76.460000 
+train epochs:2 accur: 36.000000 snum: 76.120000 cost: 1.884021
+ test epochs:2 accur: 0.610000 snum: 76.120000 
+train epochs:3 accur: 45.000000 snum: 75.880000 cost: 1.696359
+ test epochs:3 accur: 0.660000 snum: 75.880000 
+train epochs:4 accur: 55.000000 snum: 75.790000 cost: 1.527995
+ test epochs:4 accur: 0.700000 snum: 75.790000 
+train epochs:5 accur: 63.000000 snum: 76.030000 cost: 1.394745
+ test epochs:5 accur: 0.720000 snum: 76.030000 
+train epochs:6 accur: 67.000000 snum: 76.150000 cost: 1.276192
+ test epochs:6 accur: 0.770000 snum: 76.150000 
+train epochs:7 accur: 73.000000 snum: 76.420000 cost: 1.182802
+ test epochs:7 accur: 0.790000 snum: 76.420000 
+train epochs:8 accur: 75.000000 snum: 76.680000 cost: 1.097777
+ test epochs:8 accur: 0.800000 snum: 76.680000 
+train epochs:9 accur: 80.000000 snum: 77.060000 cost: 1.036204
+ test epochs:9 accur: 0.810000 snum: 77.060000 
+train epochs:10 accur: 77.000000 snum: 77.420000 cost: 0.986320
+ test epochs:10 accur: 0.800000 snum: 77.420000 
+train epochs:11 accur: 81.000000 snum: 77.740000 cost: 0.932273
+ test epochs:11 accur: 0.800000 snum: 77.740000 
+train epochs:12 accur: 81.000000 snum: 78.020000 cost: 0.881610
+ test epochs:12 accur: 0.820000 snum: 78.020000 
+train epochs:13 accur: 82.000000 snum: 78.310000 cost: 0.854829
+ test epochs:13 accur: 0.830000 snum: 78.310000 
+train epochs:14 accur: 82.000000 snum: 78.640000 cost: 0.819740
+ test epochs:14 accur: 0.850000 snum: 78.640000 
+train epochs:15 accur: 82.000000 snum: 78.920000 cost: 0.789328
+ test epochs:15 accur: 0.870000 snum: 78.920000 
+train epochs:16 accur: 85.000000 snum: 79.310000 cost: 0.768129
+ test epochs:16 accur: 0.860000 snum: 79.310000 
+train epochs:17 accur: 83.000000 snum: 79.630000 cost: 0.744864
+ test epochs:17 accur: 0.860000 snum: 79.630000 
+train epochs:18 accur: 83.000000 snum: 79.770000 cost: 0.717115
+ test epochs:18 accur: 0.850000 snum: 79.770000 
+train epochs:19 accur: 84.000000 snum: 79.930000 cost: 0.702119
+ test epochs:19 accur: 0.870000 snum: 79.930000 
+train epochs:20 accur: 84.000000 snum: 80.010000 cost: 0.683200
+ test epochs:20 accur: 0.870000 snum: 80.010000 
+train epochs:21 accur: 84.000000 snum: 80.200000 cost: 0.673182
+ test epochs:21 accur: 0.860000 snum: 80.200000 
+train epochs:22 accur: 84.000000 snum: 80.350000 cost: 0.656483
+ test epochs:22 accur: 0.870000 snum: 80.350000 
+train epochs:23 accur: 86.000000 snum: 80.520000 cost: 0.641017
+ test epochs:23 accur: 0.860000 snum: 80.520000 
+train epochs:24 accur: 87.000000 snum: 80.630000 cost: 0.627763
+ test epochs:24 accur: 0.870000 snum: 80.630000 
+train epochs:25 accur: 86.000000 snum: 80.750000 cost: 0.616261
+ test epochs:25 accur: 0.860000 snum: 80.750000 
+train epochs:26 accur: 86.000000 snum: 80.910000 cost: 0.603929
+ test epochs:26 accur: 0.860000 snum: 80.910000 
+train epochs:27 accur: 86.000000 snum: 81.070000 cost: 0.595301
+ test epochs:27 accur: 0.870000 snum: 81.070000 
+train epochs:28 accur: 87.000000 snum: 81.180000 cost: 0.580600
+ test epochs:28 accur: 0.870000 snum: 81.180000 
+train epochs:29 accur: 87.000000 snum: 81.290000 cost: 0.578685
+ test epochs:29 accur: 0.870000 snum: 81.290000 
+train epochs:30 accur: 87.000000 snum: 81.430000 cost: 0.567249
+ test epochs:30 accur: 0.870000 snum: 81.430000 
+train epochs:31 accur: 87.000000 snum: 81.610000 cost: 0.559161
+ test epochs:31 accur: 0.870000 snum: 81.610000 
+train epochs:32 accur: 87.000000 snum: 81.690000 cost: 0.558245
+ test epochs:32 accur: 0.880000 snum: 81.690000 
+train epochs:33 accur: 87.000000 snum: 81.730000 cost: 0.546513
+ test epochs:33 accur: 0.880000 snum: 81.730000 
+train epochs:34 accur: 87.000000 snum: 81.900000 cost: 0.543337
+ test epochs:34 accur: 0.880000 snum: 81.900000 
+train epochs:35 accur: 88.000000 snum: 81.990000 cost: 0.534314
+ test epochs:35 accur: 0.890000 snum: 81.990000 
+train epochs:36 accur: 89.000000 snum: 82.070000 cost: 0.526473
+ test epochs:36 accur: 0.900000 snum: 82.070000 
+train epochs:37 accur: 89.000000 snum: 82.110000 cost: 0.521877
+ test epochs:37 accur: 0.910000 snum: 82.110000 
+train epochs:38 accur: 89.000000 snum: 82.200000 cost: 0.517906
+ test epochs:38 accur: 0.910000 snum: 82.200000 
+train epochs:39 accur: 89.000000 snum: 82.270000 cost: 0.510745
+ test epochs:39 accur: 0.900000 snum: 82.270000 
+train epochs:40 accur: 89.000000 snum: 82.300000 cost: 0.501985
+ test epochs:40 accur: 0.900000 snum: 82.300000 
+train epochs:41 accur: 91.000000 snum: 82.380000 cost: 0.495159
+ test epochs:41 accur: 0.900000 snum: 82.380000 
+train epochs:42 accur: 91.000000 snum: 82.410000 cost: 0.485589
+ test epochs:42 accur: 0.920000 snum: 82.410000 
+train epochs:43 accur: 90.000000 snum: 82.500000 cost: 0.481324
+ test epochs:43 accur: 0.920000 snum: 82.500000 
+train epochs:44 accur: 92.000000 snum: 82.550000 cost: 0.468668
+ test epochs:44 accur: 0.920000 snum: 82.550000 
+train epochs:45 accur: 92.000000 snum: 82.590000 cost: 0.468864
+ test epochs:45 accur: 0.920000 snum: 82.590000 
+train epochs:46 accur: 93.000000 snum: 82.660000 cost: 0.467398
+ test epochs:46 accur: 0.920000 snum: 82.660000 
+train epochs:47 accur: 93.000000 snum: 82.730000 cost: 0.466975
+ test epochs:47 accur: 0.920000 snum: 82.730000 
+train epochs:48 accur: 92.000000 snum: 82.750000 cost: 0.468793
+ test epochs:48 accur: 0.920000 snum: 82.750000 
+train epochs:49 accur: 92.000000 snum: 82.790000 cost: 0.463946
+ test epochs:49 accur: 0.920000 snum: 82.790000 
+train epochs:50 accur: 92.000000 snum: 82.820000 cost: 0.458765
+ test epochs:50 accur: 0.920000 snum: 82.820000 
+train epochs:51 accur: 92.000000 snum: 82.860000 cost: 0.454071
+ test epochs:51 accur: 0.920000 snum: 82.860000 
+train epochs:52 accur: 92.000000 snum: 82.900000 cost: 0.446497
+ test epochs:52 accur: 0.920000 snum: 82.900000 
+train epochs:53 accur: 92.000000 snum: 82.900000 cost: 0.438460
+ test epochs:53 accur: 0.920000 snum: 82.900000 
+train epochs:54 accur: 92.000000 snum: 82.900000 cost: 0.430736
+ test epochs:54 accur: 0.920000 snum: 82.900000 
+train epochs:55 accur: 92.000000 snum: 82.920000 cost: 0.421337
+ test epochs:55 accur: 0.910000 snum: 82.920000 
+train epochs:56 accur: 92.000000 snum: 82.890000 cost: 0.414388
+ test epochs:56 accur: 0.910000 snum: 82.890000 
+train epochs:57 accur: 92.000000 snum: 82.930000 cost: 0.411727
+ test epochs:57 accur: 0.910000 snum: 82.930000 
+train epochs:58 accur: 93.000000 snum: 82.970000 cost: 0.404367
+ test epochs:58 accur: 0.910000 snum: 82.970000 
+train epochs:59 accur: 93.000000 snum: 83.000000 cost: 0.393571
+ test epochs:59 accur: 0.910000 snum: 83.000000 
+train epochs:60 accur: 93.000000 snum: 83.030000 cost: 0.393227
+ test epochs:60 accur: 0.910000 snum: 83.030000 
+train epochs:61 accur: 93.000000 snum: 83.030000 cost: 0.387992
+ test epochs:61 accur: 0.910000 snum: 83.030000 
+train epochs:62 accur: 93.000000 snum: 83.030000 cost: 0.386462
+ test epochs:62 accur: 0.910000 snum: 83.030000 
+train epochs:63 accur: 93.000000 snum: 83.050000 cost: 0.384661
+ test epochs:63 accur: 0.910000 snum: 83.050000 
+train epochs:64 accur: 93.000000 snum: 83.140000 cost: 0.385340
+ test epochs:64 accur: 0.910000 snum: 83.140000 
+train epochs:65 accur: 93.000000 snum: 83.190000 cost: 0.384034
+ test epochs:65 accur: 0.910000 snum: 83.190000 
+train epochs:66 accur: 93.000000 snum: 83.220000 cost: 0.389971
+ test epochs:66 accur: 0.910000 snum: 83.220000 
+train epochs:67 accur: 93.000000 snum: 83.270000 cost: 0.382338
+ test epochs:67 accur: 0.910000 snum: 83.270000 
+train epochs:68 accur: 93.000000 snum: 83.340000 cost: 0.384386
+ test epochs:68 accur: 0.910000 snum: 83.340000 
+train epochs:69 accur: 93.000000 snum: 83.360000 cost: 0.377376
+ test epochs:69 accur: 0.910000 snum: 83.360000 
+train epochs:70 accur: 93.000000 snum: 83.410000 cost: 0.375556
+ test epochs:70 accur: 0.910000 snum: 83.410000 
+train epochs:71 accur: 93.000000 snum: 83.440000 cost: 0.372769
+ test epochs:71 accur: 0.910000 snum: 83.440000 
+train epochs:72 accur: 93.000000 snum: 83.440000 cost: 0.364877
+ test epochs:72 accur: 0.910000 snum: 83.440000 
+train epochs:73 accur: 93.000000 snum: 83.470000 cost: 0.362397
+ test epochs:73 accur: 0.920000 snum: 83.470000 
+train epochs:74 accur: 93.000000 snum: 83.510000 cost: 0.363934
+ test epochs:74 accur: 0.910000 snum: 83.510000 
+train epochs:75 accur: 93.000000 snum: 83.540000 cost: 0.370663
+ test epochs:75 accur: 0.910000 snum: 83.540000 
+train epochs:76 accur: 93.000000 snum: 83.540000 cost: 0.359117
+ test epochs:76 accur: 0.920000 snum: 83.540000 
+train epochs:77 accur: 93.000000 snum: 83.560000 cost: 0.365187
+ test epochs:77 accur: 0.920000 snum: 83.560000 
+train epochs:78 accur: 93.000000 snum: 83.600000 cost: 0.352427
+ test epochs:78 accur: 0.920000 snum: 83.600000 
+train epochs:79 accur: 93.000000 snum: 83.580000 cost: 0.356330
+ test epochs:79 accur: 0.920000 snum: 83.580000 
+train epochs:80 accur: 93.000000 snum: 83.590000 cost: 0.356006
+ test epochs:80 accur: 0.930000 snum: 83.590000 
+train epochs:81 accur: 93.000000 snum: 83.620000 cost: 0.352802
+ test epochs:81 accur: 0.930000 snum: 83.620000 
+train epochs:82 accur: 93.000000 snum: 83.620000 cost: 0.347168
+ test epochs:82 accur: 0.930000 snum: 83.620000 
+train epochs:83 accur: 93.000000 snum: 83.620000 cost: 0.341281
+ test epochs:83 accur: 0.930000 snum: 83.620000 
+train epochs:84 accur: 93.000000 snum: 83.620000 cost: 0.340248
+ test epochs:84 accur: 0.930000 snum: 83.620000 
+train epochs:85 accur: 93.000000 snum: 83.650000 cost: 0.333757
+ test epochs:85 accur: 0.930000 snum: 83.650000 
+train epochs:86 accur: 93.000000 snum: 83.700000 cost: 0.339903
+ test epochs:86 accur: 0.920000 snum: 83.700000 
+train epochs:87 accur: 93.000000 snum: 83.710000 cost: 0.337809
+ test epochs:87 accur: 0.920000 snum: 83.710000 
+train epochs:88 accur: 93.000000 snum: 83.730000 cost: 0.334955
+ test epochs:88 accur: 0.910000 snum: 83.730000 
+train epochs:89 accur: 93.000000 snum: 83.760000 cost: 0.334034
+ test epochs:89 accur: 0.910000 snum: 83.760000 
+train epochs:90 accur: 93.000000 snum: 83.740000 cost: 0.325504
+ test epochs:90 accur: 0.910000 snum: 83.740000 
+train epochs:91 accur: 93.000000 snum: 83.760000 cost: 0.323074
+ test epochs:91 accur: 0.910000 snum: 83.760000 
+train epochs:92 accur: 93.000000 snum: 83.780000 cost: 0.319850
+ test epochs:92 accur: 0.910000 snum: 83.780000 
+train epochs:93 accur: 93.000000 snum: 83.780000 cost: 0.319775
+ test epochs:93 accur: 0.920000 snum: 83.780000 
+train epochs:94 accur: 93.000000 snum: 83.820000 cost: 0.319013
+ test epochs:94 accur: 0.920000 snum: 83.820000 
+train epochs:95 accur: 93.000000 snum: 83.830000 cost: 0.318883
+ test epochs:95 accur: 0.920000 snum: 83.830000 
+train epochs:96 accur: 93.000000 snum: 83.880000 cost: 0.321571
+ test epochs:96 accur: 0.920000 snum: 83.880000 
+train epochs:97 accur: 93.000000 snum: 83.860000 cost: 0.311598
+ test epochs:97 accur: 0.930000 snum: 83.860000 
+train epochs:98 accur: 93.000000 snum: 83.880000 cost: 0.309351
+ test epochs:98 accur: 0.930000 snum: 83.880000 
+train epochs:99 accur: 94.000000 snum: 83.910000 cost: 0.313684
+ test epochs:99 accur: 0.930000 snum: 83.910000 

@@ -1,0 +1,200 @@
+train iter: 0 acuracy: 14 spike: 7485 cost: 2.358488
+test  iter:                               0 accuracy: 42
+train iter: 1 acuracy: 31 spike: 7412 cost: 2.105911
+test  iter:                               1 accuracy: 53
+train iter: 2 acuracy: 34 spike: 7362 cost: 1.886221
+test  iter:                               2 accuracy: 63
+train iter: 3 acuracy: 46 spike: 7321 cost: 1.695058
+test  iter:                               3 accuracy: 66
+train iter: 4 acuracy: 57 spike: 7326 cost: 1.532517
+test  iter:                               4 accuracy: 70
+train iter: 5 acuracy: 65 spike: 7329 cost: 1.388044
+test  iter:                               5 accuracy: 70
+train iter: 6 acuracy: 67 spike: 7357 cost: 1.273267
+test  iter:                               6 accuracy: 74
+train iter: 7 acuracy: 73 spike: 7387 cost: 1.172733
+test  iter:                               7 accuracy: 76
+train iter: 8 acuracy: 76 spike: 7422 cost: 1.081016
+test  iter:                               8 accuracy: 79
+train iter: 9 acuracy: 80 spike: 7464 cost: 1.006546
+test  iter:                               9 accuracy: 80
+train iter: 10 acuracy: 79 spike: 7502 cost: 0.961464
+test  iter:                               10 accuracy: 80
+train iter: 11 acuracy: 80 spike: 7539 cost: 0.896005
+test  iter:                               11 accuracy: 82
+train iter: 12 acuracy: 81 spike: 7566 cost: 0.850866
+test  iter:                               12 accuracy: 83
+train iter: 13 acuracy: 84 spike: 7608 cost: 0.816551
+test  iter:                               13 accuracy: 84
+train iter: 14 acuracy: 84 spike: 7651 cost: 0.784034
+test  iter:                               14 accuracy: 85
+train iter: 15 acuracy: 84 spike: 7691 cost: 0.750545
+test  iter:                               15 accuracy: 85
+train iter: 16 acuracy: 83 spike: 7728 cost: 0.734219
+test  iter:                               16 accuracy: 85
+train iter: 17 acuracy: 82 spike: 7761 cost: 0.713603
+test  iter:                               17 accuracy: 88
+train iter: 18 acuracy: 84 spike: 7776 cost: 0.693129
+test  iter:                               18 accuracy: 87
+train iter: 19 acuracy: 85 spike: 7801 cost: 0.675391
+test  iter:                               19 accuracy: 86
+train iter: 20 acuracy: 84 spike: 7831 cost: 0.664163
+test  iter:                               20 accuracy: 85
+train iter: 21 acuracy: 84 spike: 7848 cost: 0.642499
+test  iter:                               21 accuracy: 86
+train iter: 22 acuracy: 85 spike: 7864 cost: 0.626214
+test  iter:                               22 accuracy: 87
+train iter: 23 acuracy: 86 spike: 7887 cost: 0.612036
+test  iter:                               23 accuracy: 89
+train iter: 24 acuracy: 86 spike: 7905 cost: 0.595255
+test  iter:                               24 accuracy: 89
+train iter: 25 acuracy: 87 spike: 7916 cost: 0.574455
+test  iter:                               25 accuracy: 89
+train iter: 26 acuracy: 88 spike: 7941 cost: 0.567159
+test  iter:                               26 accuracy: 89
+train iter: 27 acuracy: 89 spike: 7956 cost: 0.551032
+test  iter:                               27 accuracy: 89
+train iter: 28 acuracy: 89 spike: 7964 cost: 0.544832
+test  iter:                               28 accuracy: 89
+train iter: 29 acuracy: 89 spike: 7979 cost: 0.530884
+test  iter:                               29 accuracy: 90
+train iter: 30 acuracy: 90 spike: 7993 cost: 0.524387
+test  iter:                               30 accuracy: 90
+train iter: 31 acuracy: 90 spike: 8006 cost: 0.520531
+test  iter:                               31 accuracy: 90
+train iter: 32 acuracy: 90 spike: 8024 cost: 0.522304
+test  iter:                               32 accuracy: 89
+train iter: 33 acuracy: 90 spike: 8033 cost: 0.512195
+test  iter:                               33 accuracy: 89
+train iter: 34 acuracy: 89 spike: 8047 cost: 0.517054
+test  iter:                               34 accuracy: 90
+train iter: 35 acuracy: 90 spike: 8057 cost: 0.506475
+test  iter:                               35 accuracy: 90
+train iter: 36 acuracy: 90 spike: 8075 cost: 0.503248
+test  iter:                               36 accuracy: 90
+train iter: 37 acuracy: 90 spike: 8082 cost: 0.498489
+test  iter:                               37 accuracy: 90
+train iter: 38 acuracy: 90 spike: 8095 cost: 0.490006
+test  iter:                               38 accuracy: 90
+train iter: 39 acuracy: 91 spike: 8109 cost: 0.485136
+test  iter:                               39 accuracy: 90
+train iter: 40 acuracy: 92 spike: 8119 cost: 0.467879
+test  iter:                               40 accuracy: 90
+train iter: 41 acuracy: 91 spike: 8126 cost: 0.461198
+test  iter:                               41 accuracy: 90
+train iter: 42 acuracy: 90 spike: 8135 cost: 0.458466
+test  iter:                               42 accuracy: 90
+train iter: 43 acuracy: 90 spike: 8144 cost: 0.452492
+test  iter:                               43 accuracy: 90
+train iter: 44 acuracy: 90 spike: 8150 cost: 0.444192
+test  iter:                               44 accuracy: 90
+train iter: 45 acuracy: 90 spike: 8162 cost: 0.438691
+test  iter:                               45 accuracy: 89
+train iter: 46 acuracy: 91 spike: 8170 cost: 0.433258
+test  iter:                               46 accuracy: 90
+train iter: 47 acuracy: 92 spike: 8173 cost: 0.436192
+test  iter:                               47 accuracy: 90
+train iter: 48 acuracy: 92 spike: 8179 cost: 0.435898
+test  iter:                               48 accuracy: 90
+train iter: 49 acuracy: 92 spike: 8176 cost: 0.432609
+test  iter:                               49 accuracy: 90
+train iter: 50 acuracy: 90 spike: 8182 cost: 0.429168
+test  iter:                               50 accuracy: 90
+train iter: 51 acuracy: 91 spike: 8182 cost: 0.408797
+test  iter:                               51 accuracy: 90
+train iter: 52 acuracy: 90 spike: 8188 cost: 0.418795
+test  iter:                               52 accuracy: 90
+train iter: 53 acuracy: 91 spike: 8189 cost: 0.394428
+test  iter:                               53 accuracy: 89
+train iter: 54 acuracy: 90 spike: 8197 cost: 0.420389
+test  iter:                               54 accuracy: 89
+train iter: 55 acuracy: 91 spike: 8197 cost: 0.396648
+test  iter:                               55 accuracy: 90
+train iter: 56 acuracy: 92 spike: 8198 cost: 0.391971
+test  iter:                               56 accuracy: 90
+train iter: 57 acuracy: 92 spike: 8198 cost: 0.377735
+test  iter:                               57 accuracy: 90
+train iter: 58 acuracy: 92 spike: 8204 cost: 0.369467
+test  iter:                               58 accuracy: 92
+train iter: 59 acuracy: 91 spike: 8209 cost: 0.360304
+test  iter:                               59 accuracy: 94
+train iter: 60 acuracy: 91 spike: 8218 cost: 0.369026
+test  iter:                               60 accuracy: 94
+train iter: 61 acuracy: 92 spike: 8221 cost: 0.365652
+test  iter:                               61 accuracy: 94
+train iter: 62 acuracy: 92 spike: 8228 cost: 0.369665
+test  iter:                               62 accuracy: 94
+train iter: 63 acuracy: 92 spike: 8231 cost: 0.365038
+test  iter:                               63 accuracy: 94
+train iter: 64 acuracy: 92 spike: 8234 cost: 0.352923
+test  iter:                               64 accuracy: 94
+train iter: 65 acuracy: 92 spike: 8240 cost: 0.348124
+test  iter:                               65 accuracy: 94
+train iter: 66 acuracy: 94 spike: 8245 cost: 0.354505
+test  iter:                               66 accuracy: 94
+train iter: 67 acuracy: 94 spike: 8245 cost: 0.342097
+test  iter:                               67 accuracy: 94
+train iter: 68 acuracy: 94 spike: 8252 cost: 0.344970
+test  iter:                               68 accuracy: 95
+train iter: 69 acuracy: 95 spike: 8254 cost: 0.339276
+test  iter:                               69 accuracy: 95
+train iter: 70 acuracy: 95 spike: 8255 cost: 0.335313
+test  iter:                               70 accuracy: 95
+train iter: 71 acuracy: 95 spike: 8249 cost: 0.327236
+test  iter:                               71 accuracy: 95
+train iter: 72 acuracy: 95 spike: 8257 cost: 0.322043
+test  iter:                               72 accuracy: 95
+train iter: 73 acuracy: 95 spike: 8261 cost: 0.327462
+test  iter:                               73 accuracy: 95
+train iter: 74 acuracy: 95 spike: 8266 cost: 0.332156
+test  iter:                               74 accuracy: 95
+train iter: 75 acuracy: 95 spike: 8265 cost: 0.313436
+test  iter:                               75 accuracy: 95
+train iter: 76 acuracy: 95 spike: 8269 cost: 0.317573
+test  iter:                               76 accuracy: 95
+train iter: 77 acuracy: 95 spike: 8269 cost: 0.320322
+test  iter:                               77 accuracy: 95
+train iter: 78 acuracy: 95 spike: 8272 cost: 0.315522
+test  iter:                               78 accuracy: 95
+train iter: 79 acuracy: 95 spike: 8274 cost: 0.311159
+test  iter:                               79 accuracy: 95
+train iter: 80 acuracy: 95 spike: 8274 cost: 0.304983
+test  iter:                               80 accuracy: 95
+train iter: 81 acuracy: 96 spike: 8278 cost: 0.303221
+test  iter:                               81 accuracy: 95
+train iter: 82 acuracy: 96 spike: 8278 cost: 0.299983
+test  iter:                               82 accuracy: 95
+train iter: 83 acuracy: 96 spike: 8285 cost: 0.297072
+test  iter:                               83 accuracy: 95
+train iter: 84 acuracy: 96 spike: 8287 cost: 0.303320
+test  iter:                               84 accuracy: 95
+train iter: 85 acuracy: 94 spike: 8294 cost: 0.328108
+test  iter:                               85 accuracy: 95
+train iter: 86 acuracy: 94 spike: 8293 cost: 0.320292
+test  iter:                               86 accuracy: 95
+train iter: 87 acuracy: 94 spike: 8293 cost: 0.317100
+test  iter:                               87 accuracy: 95
+train iter: 88 acuracy: 94 spike: 8292 cost: 0.314405
+test  iter:                               88 accuracy: 95
+train iter: 89 acuracy: 94 spike: 8294 cost: 0.318997
+test  iter:                               89 accuracy: 95
+train iter: 90 acuracy: 94 spike: 8297 cost: 0.325504
+test  iter:                               90 accuracy: 95
+train iter: 91 acuracy: 94 spike: 8295 cost: 0.311295
+test  iter:                               91 accuracy: 95
+train iter: 92 acuracy: 94 spike: 8295 cost: 0.308204
+test  iter:                               92 accuracy: 95
+train iter: 93 acuracy: 94 spike: 8298 cost: 0.314086
+test  iter:                               93 accuracy: 95
+train iter: 94 acuracy: 94 spike: 8301 cost: 0.310703
+test  iter:                               94 accuracy: 95
+train iter: 95 acuracy: 94 spike: 8301 cost: 0.301833
+test  iter:                               95 accuracy: 95
+train iter: 96 acuracy: 94 spike: 8304 cost: 0.309505
+test  iter:                               96 accuracy: 95
+train iter: 97 acuracy: 93 spike: 8303 cost: 0.313226
+test  iter:                               97 accuracy: 95
+train iter: 98 acuracy: 94 spike: 8308 cost: 0.295354
+test  iter:                               98 accuracy: 95
+train iter: 99 acuracy: 93 spike: 8310 cost: 0.307558
+test  iter:                               99 accuracy: 95

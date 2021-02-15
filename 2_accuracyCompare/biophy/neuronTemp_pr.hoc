@@ -1,0 +1,86 @@
+//neuron model, pinsky rinzel
+
+begintemplate neuronModel
+   public soma, dend, nclist, updateWeights
+   create soma, dend
+	 objectvar nclist	
+
+	 proc init() {
+		
+		create soma, dend
+		nclist = new List()
+		soma connect dend(0), 1
+		
+		p = 0.5 // proportion of area taken up by soma
+		dia = 20
+		soma.L = p*dia/PI
+		dend.L = (1-p)*dia/PI
+		soma.diam = dia
+		dend.diam = dia
+		
+		in_e_pas = $5
+		in_gpas = $6
+		in_gmax_nafPR = $7
+		in_gmax_kdr = $8
+		in_gmax_rkq = $9
+		in_gmax_cal = $10
+		in_gmax_kcRT03 = $11
+		
+		in_lighton_CHR2 = $1
+		in_lightoff_CHR2 = $2
+		in_N_CHR2 =$3
+		in_e_CHR2 = $4
+
+		access soma
+
+		soma{
+				insert pas
+				insert kdr
+				insert nafPR
+				insert CHR2
+
+				gmax_nafPR= in_gmax_nafPR 
+				gmax_kdr= in_gmax_kdr   
+				g_pas= in_gpas 
+				e_pas = in_e_pas
+				ek= -88
+				vrest_nafPR= in_e_pas
+				vrest_kdr=in_e_pas
+
+				N_CHR2 = in_N_CHR2
+				e_CHR2 = in_e_CHR2
+				lighton_CHR2= in_lighton_CHR2
+				lightoff_CHR2= in_lightoff_CHR2
+		}
+
+		access dend	
+
+		dend{
+				insert pas
+				insert rcadecay
+				insert cal
+				insert kcRT03
+				insert rkq
+
+				g_pas= in_gpas 
+				e_pas= in_e_pas 
+				phi_rcadecay = 130
+				gmax_cal = in_gmax_cal  
+				erev_cal = 80
+
+				gmax_kcRT03= in_gmax_kcRT03   
+				gmax_rkq= in_gmax_rkq     
+				ek= -88
+		}
+	}
+
+
+	proc updateWeights() {local i, newWeight
+			for i = 0, nclist.count()-1 {
+					newWeight = $&1[i]
+					nclist.object(i).weight = newWeight
+			}
+	}
+
+
+endtemplate neuronModel

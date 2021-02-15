@@ -1,0 +1,203 @@
+epochs:100 train length:1000 test length:1000
+network size/Vth/w1/w2/lr/[preprocessing, estimator, addlr, privatew, seed, sparsity]/estimator range/ones/:
+[[196, 100, 10], [0.0066, 0.0019], [0.0009, 0.0009], [0.0009, 0.03], [5e-06, 0.008, 0], [0, 0, 0, 1, 0, 10], [0, 0.0075], 20.0]
+train epochs: 0  avg_cost: 2.115660  avg_ones: 9.776000  accuracy: 0.312000
+test epochs: 0  avg_cost: 1.918006  accuracy: 0.477000
+train epochs: 1  avg_cost: 1.806687  avg_ones: 10.008000  accuracy: 0.508000
+test epochs: 1  avg_cost: 1.677373  accuracy: 0.541000
+train epochs: 2  avg_cost: 1.599114  avg_ones: 10.273000  accuracy: 0.576000
+test epochs: 2  avg_cost: 1.499432  accuracy: 0.588000
+train epochs: 3  avg_cost: 1.447030  avg_ones: 10.617000  accuracy: 0.601000
+test epochs: 3  avg_cost: 1.372505  accuracy: 0.615000
+train epochs: 4  avg_cost: 1.321993  avg_ones: 10.949000  accuracy: 0.628000
+test epochs: 4  avg_cost: 1.252481  accuracy: 0.638000
+train epochs: 5  avg_cost: 1.220657  avg_ones: 11.412000  accuracy: 0.650000
+test epochs: 5  avg_cost: 1.172676  accuracy: 0.651000
+train epochs: 6  avg_cost: 1.153588  avg_ones: 11.719000  accuracy: 0.659000
+test epochs: 6  avg_cost: 1.110714  accuracy: 0.663000
+train epochs: 7  avg_cost: 1.096633  avg_ones: 12.146000  accuracy: 0.683000
+test epochs: 7  avg_cost: 1.053152  accuracy: 0.683000
+train epochs: 8  avg_cost: 1.037333  avg_ones: 12.565000  accuracy: 0.705000
+test epochs: 8  avg_cost: 1.008585  accuracy: 0.709000
+train epochs: 9  avg_cost: 0.982344  avg_ones: 12.962000  accuracy: 0.715000
+test epochs: 9  avg_cost: 0.948894  accuracy: 0.718000
+train epochs: 10  avg_cost: 0.947291  avg_ones: 13.299000  accuracy: 0.715000
+test epochs: 10  avg_cost: 0.902416  accuracy: 0.728000
+train epochs: 11  avg_cost: 0.893412  avg_ones: 13.733000  accuracy: 0.734000
+test epochs: 11  avg_cost: 0.865944  accuracy: 0.741000
+train epochs: 12  avg_cost: 0.849550  avg_ones: 14.014000  accuracy: 0.752000
+test epochs: 12  avg_cost: 0.831912  accuracy: 0.749000
+train epochs: 13  avg_cost: 0.815880  avg_ones: 14.265000  accuracy: 0.758000
+test epochs: 13  avg_cost: 0.797700  accuracy: 0.758000
+train epochs: 14  avg_cost: 0.797404  avg_ones: 14.463000  accuracy: 0.759000
+test epochs: 14  avg_cost: 0.783215  accuracy: 0.765000
+train epochs: 15  avg_cost: 0.775747  avg_ones: 14.574000  accuracy: 0.766000
+test epochs: 15  avg_cost: 0.764886  accuracy: 0.767000
+train epochs: 16  avg_cost: 0.759924  avg_ones: 14.663000  accuracy: 0.770000
+test epochs: 16  avg_cost: 0.745702  accuracy: 0.771000
+train epochs: 17  avg_cost: 0.748442  avg_ones: 14.803000  accuracy: 0.775000
+test epochs: 17  avg_cost: 0.726876  accuracy: 0.791000
+train epochs: 18  avg_cost: 0.728188  avg_ones: 14.985000  accuracy: 0.787000
+test epochs: 18  avg_cost: 0.715901  accuracy: 0.793000
+train epochs: 19  avg_cost: 0.714775  avg_ones: 15.111000  accuracy: 0.789000
+test epochs: 19  avg_cost: 0.704231  accuracy: 0.794000
+train epochs: 20  avg_cost: 0.704557  avg_ones: 15.199000  accuracy: 0.787000
+test epochs: 20  avg_cost: 0.694654  accuracy: 0.793000
+train epochs: 21  avg_cost: 0.699348  avg_ones: 15.372000  accuracy: 0.788000
+test epochs: 21  avg_cost: 0.691328  accuracy: 0.798000
+train epochs: 22  avg_cost: 0.696054  avg_ones: 15.556000  accuracy: 0.791000
+test epochs: 22  avg_cost: 0.679200  accuracy: 0.793000
+train epochs: 23  avg_cost: 0.687375  avg_ones: 15.705000  accuracy: 0.793000
+test epochs: 23  avg_cost: 0.676608  accuracy: 0.800000
+train epochs: 24  avg_cost: 0.680115  avg_ones: 15.857000  accuracy: 0.794000
+test epochs: 24  avg_cost: 0.664163  accuracy: 0.806000
+train epochs: 25  avg_cost: 0.669577  avg_ones: 15.963000  accuracy: 0.797000
+test epochs: 25  avg_cost: 0.658618  accuracy: 0.804000
+train epochs: 26  avg_cost: 0.662560  avg_ones: 16.055000  accuracy: 0.801000
+test epochs: 26  avg_cost: 0.650671  accuracy: 0.804000
+train epochs: 27  avg_cost: 0.653948  avg_ones: 16.125000  accuracy: 0.803000
+test epochs: 27  avg_cost: 0.644850  accuracy: 0.804000
+train epochs: 28  avg_cost: 0.648465  avg_ones: 16.190000  accuracy: 0.805000
+test epochs: 28  avg_cost: 0.630235  accuracy: 0.814000
+train epochs: 29  avg_cost: 0.629948  avg_ones: 16.283000  accuracy: 0.809000
+test epochs: 29  avg_cost: 0.619722  accuracy: 0.818000
+train epochs: 30  avg_cost: 0.625262  avg_ones: 16.355000  accuracy: 0.811000
+test epochs: 30  avg_cost: 0.610995  accuracy: 0.820000
+train epochs: 31  avg_cost: 0.618520  avg_ones: 16.448000  accuracy: 0.813000
+test epochs: 31  avg_cost: 0.605168  accuracy: 0.825000
+train epochs: 32  avg_cost: 0.616307  avg_ones: 16.560000  accuracy: 0.819000
+test epochs: 32  avg_cost: 0.602370  accuracy: 0.825000
+train epochs: 33  avg_cost: 0.605487  avg_ones: 16.685000  accuracy: 0.817000
+test epochs: 33  avg_cost: 0.598357  accuracy: 0.827000
+train epochs: 34  avg_cost: 0.603513  avg_ones: 16.722000  accuracy: 0.820000
+test epochs: 34  avg_cost: 0.590223  accuracy: 0.829000
+train epochs: 35  avg_cost: 0.597683  avg_ones: 16.763000  accuracy: 0.821000
+test epochs: 35  avg_cost: 0.586160  accuracy: 0.828000
+train epochs: 36  avg_cost: 0.594425  avg_ones: 16.835000  accuracy: 0.821000
+test epochs: 36  avg_cost: 0.579453  accuracy: 0.828000
+train epochs: 37  avg_cost: 0.584628  avg_ones: 16.893000  accuracy: 0.818000
+test epochs: 37  avg_cost: 0.568827  accuracy: 0.832000
+train epochs: 38  avg_cost: 0.576434  avg_ones: 16.988000  accuracy: 0.821000
+test epochs: 38  avg_cost: 0.562927  accuracy: 0.833000
+train epochs: 39  avg_cost: 0.569492  avg_ones: 17.101000  accuracy: 0.825000
+test epochs: 39  avg_cost: 0.551969  accuracy: 0.844000
+train epochs: 40  avg_cost: 0.563339  avg_ones: 17.155000  accuracy: 0.829000
+test epochs: 40  avg_cost: 0.551719  accuracy: 0.843000
+train epochs: 41  avg_cost: 0.551824  avg_ones: 17.200000  accuracy: 0.834000
+test epochs: 41  avg_cost: 0.543959  accuracy: 0.844000
+train epochs: 42  avg_cost: 0.547829  avg_ones: 17.255000  accuracy: 0.833000
+test epochs: 42  avg_cost: 0.537229  accuracy: 0.845000
+train epochs: 43  avg_cost: 0.545676  avg_ones: 17.316000  accuracy: 0.831000
+test epochs: 43  avg_cost: 0.529863  accuracy: 0.847000
+train epochs: 44  avg_cost: 0.540424  avg_ones: 17.363000  accuracy: 0.837000
+test epochs: 44  avg_cost: 0.526162  accuracy: 0.848000
+train epochs: 45  avg_cost: 0.537340  avg_ones: 17.440000  accuracy: 0.836000
+test epochs: 45  avg_cost: 0.525089  accuracy: 0.842000
+train epochs: 46  avg_cost: 0.534508  avg_ones: 17.526000  accuracy: 0.827000
+test epochs: 46  avg_cost: 0.523306  accuracy: 0.841000
+train epochs: 47  avg_cost: 0.532356  avg_ones: 17.584000  accuracy: 0.827000
+test epochs: 47  avg_cost: 0.519906  accuracy: 0.843000
+train epochs: 48  avg_cost: 0.526339  avg_ones: 17.618000  accuracy: 0.830000
+test epochs: 48  avg_cost: 0.513608  accuracy: 0.845000
+train epochs: 49  avg_cost: 0.521221  avg_ones: 17.651000  accuracy: 0.832000
+test epochs: 49  avg_cost: 0.510742  accuracy: 0.845000
+train epochs: 50  avg_cost: 0.516499  avg_ones: 17.716000  accuracy: 0.838000
+test epochs: 50  avg_cost: 0.507289  accuracy: 0.849000
+train epochs: 51  avg_cost: 0.516847  avg_ones: 17.777000  accuracy: 0.841000
+test epochs: 51  avg_cost: 0.503678  accuracy: 0.853000
+train epochs: 52  avg_cost: 0.507088  avg_ones: 17.829000  accuracy: 0.847000
+test epochs: 52  avg_cost: 0.500898  accuracy: 0.851000
+train epochs: 53  avg_cost: 0.507050  avg_ones: 17.848000  accuracy: 0.848000
+test epochs: 53  avg_cost: 0.500324  accuracy: 0.852000
+train epochs: 54  avg_cost: 0.508345  avg_ones: 17.877000  accuracy: 0.847000
+test epochs: 54  avg_cost: 0.496447  accuracy: 0.851000
+train epochs: 55  avg_cost: 0.507948  avg_ones: 17.888000  accuracy: 0.846000
+test epochs: 55  avg_cost: 0.492028  accuracy: 0.853000
+train epochs: 56  avg_cost: 0.500920  avg_ones: 17.920000  accuracy: 0.849000
+test epochs: 56  avg_cost: 0.487710  accuracy: 0.855000
+train epochs: 57  avg_cost: 0.496319  avg_ones: 17.951000  accuracy: 0.853000
+test epochs: 57  avg_cost: 0.486148  accuracy: 0.856000
+train epochs: 58  avg_cost: 0.494793  avg_ones: 17.964000  accuracy: 0.853000
+test epochs: 58  avg_cost: 0.480147  accuracy: 0.860000
+train epochs: 59  avg_cost: 0.491787  avg_ones: 17.968000  accuracy: 0.858000
+test epochs: 59  avg_cost: 0.477771  accuracy: 0.862000
+train epochs: 60  avg_cost: 0.484905  avg_ones: 17.990000  accuracy: 0.859000
+test epochs: 60  avg_cost: 0.478448  accuracy: 0.861000
+train epochs: 61  avg_cost: 0.486017  avg_ones: 18.023000  accuracy: 0.859000
+test epochs: 61  avg_cost: 0.474345  accuracy: 0.862000
+train epochs: 62  avg_cost: 0.482849  avg_ones: 18.039000  accuracy: 0.860000
+test epochs: 62  avg_cost: 0.472266  accuracy: 0.865000
+train epochs: 63  avg_cost: 0.478702  avg_ones: 18.086000  accuracy: 0.861000
+test epochs: 63  avg_cost: 0.468710  accuracy: 0.864000
+train epochs: 64  avg_cost: 0.478861  avg_ones: 18.143000  accuracy: 0.861000
+test epochs: 64  avg_cost: 0.471946  accuracy: 0.868000
+train epochs: 65  avg_cost: 0.474868  avg_ones: 18.192000  accuracy: 0.858000
+test epochs: 65  avg_cost: 0.473541  accuracy: 0.864000
+train epochs: 66  avg_cost: 0.475551  avg_ones: 18.279000  accuracy: 0.853000
+test epochs: 66  avg_cost: 0.470300  accuracy: 0.864000
+train epochs: 67  avg_cost: 0.476677  avg_ones: 18.322000  accuracy: 0.854000
+test epochs: 67  avg_cost: 0.461246  accuracy: 0.863000
+train epochs: 68  avg_cost: 0.474204  avg_ones: 18.354000  accuracy: 0.856000
+test epochs: 68  avg_cost: 0.458585  accuracy: 0.865000
+train epochs: 69  avg_cost: 0.473299  avg_ones: 18.392000  accuracy: 0.859000
+test epochs: 69  avg_cost: 0.454687  accuracy: 0.866000
+train epochs: 70  avg_cost: 0.467753  avg_ones: 18.443000  accuracy: 0.860000
+test epochs: 70  avg_cost: 0.453573  accuracy: 0.866000
+train epochs: 71  avg_cost: 0.465347  avg_ones: 18.494000  accuracy: 0.863000
+test epochs: 71  avg_cost: 0.450217  accuracy: 0.870000
+train epochs: 72  avg_cost: 0.462979  avg_ones: 18.497000  accuracy: 0.862000
+test epochs: 72  avg_cost: 0.449540  accuracy: 0.867000
+train epochs: 73  avg_cost: 0.460451  avg_ones: 18.509000  accuracy: 0.860000
+test epochs: 73  avg_cost: 0.447503  accuracy: 0.865000
+train epochs: 74  avg_cost: 0.460624  avg_ones: 18.544000  accuracy: 0.861000
+test epochs: 74  avg_cost: 0.445319  accuracy: 0.869000
+train epochs: 75  avg_cost: 0.457633  avg_ones: 18.560000  accuracy: 0.857000
+test epochs: 75  avg_cost: 0.446540  accuracy: 0.867000
+train epochs: 76  avg_cost: 0.456413  avg_ones: 18.594000  accuracy: 0.857000
+test epochs: 76  avg_cost: 0.442400  accuracy: 0.869000
+train epochs: 77  avg_cost: 0.452441  avg_ones: 18.640000  accuracy: 0.861000
+test epochs: 77  avg_cost: 0.439865  accuracy: 0.869000
+train epochs: 78  avg_cost: 0.451640  avg_ones: 18.657000  accuracy: 0.860000
+test epochs: 78  avg_cost: 0.437715  accuracy: 0.871000
+train epochs: 79  avg_cost: 0.449035  avg_ones: 18.666000  accuracy: 0.865000
+test epochs: 79  avg_cost: 0.435574  accuracy: 0.868000
+train epochs: 80  avg_cost: 0.444206  avg_ones: 18.695000  accuracy: 0.865000
+test epochs: 80  avg_cost: 0.434872  accuracy: 0.869000
+train epochs: 81  avg_cost: 0.443952  avg_ones: 18.702000  accuracy: 0.864000
+test epochs: 81  avg_cost: 0.432068  accuracy: 0.870000
+train epochs: 82  avg_cost: 0.442707  avg_ones: 18.699000  accuracy: 0.870000
+test epochs: 82  avg_cost: 0.430930  accuracy: 0.872000
+train epochs: 83  avg_cost: 0.441925  avg_ones: 18.703000  accuracy: 0.870000
+test epochs: 83  avg_cost: 0.426066  accuracy: 0.872000
+train epochs: 84  avg_cost: 0.436791  avg_ones: 18.729000  accuracy: 0.870000
+test epochs: 84  avg_cost: 0.424011  accuracy: 0.873000
+train epochs: 85  avg_cost: 0.434543  avg_ones: 18.788000  accuracy: 0.874000
+test epochs: 85  avg_cost: 0.421132  accuracy: 0.874000
+train epochs: 86  avg_cost: 0.428411  avg_ones: 18.795000  accuracy: 0.875000
+test epochs: 86  avg_cost: 0.418871  accuracy: 0.875000
+train epochs: 87  avg_cost: 0.423790  avg_ones: 18.807000  accuracy: 0.876000
+test epochs: 87  avg_cost: 0.416259  accuracy: 0.876000
+train epochs: 88  avg_cost: 0.421313  avg_ones: 18.818000  accuracy: 0.875000
+test epochs: 88  avg_cost: 0.410530  accuracy: 0.880000
+train epochs: 89  avg_cost: 0.418795  avg_ones: 18.827000  accuracy: 0.877000
+test epochs: 89  avg_cost: 0.406043  accuracy: 0.884000
+train epochs: 90  avg_cost: 0.417211  avg_ones: 18.829000  accuracy: 0.879000
+test epochs: 90  avg_cost: 0.408445  accuracy: 0.882000
+train epochs: 91  avg_cost: 0.413132  avg_ones: 18.859000  accuracy: 0.881000
+test epochs: 91  avg_cost: 0.405943  accuracy: 0.883000
+train epochs: 92  avg_cost: 0.411296  avg_ones: 18.864000  accuracy: 0.882000
+test epochs: 92  avg_cost: 0.399813  accuracy: 0.887000
+train epochs: 93  avg_cost: 0.408640  avg_ones: 18.891000  accuracy: 0.883000
+test epochs: 93  avg_cost: 0.399781  accuracy: 0.884000
+train epochs: 94  avg_cost: 0.405355  avg_ones: 18.925000  accuracy: 0.880000
+test epochs: 94  avg_cost: 0.401465  accuracy: 0.884000
+train epochs: 95  avg_cost: 0.403800  avg_ones: 18.952000  accuracy: 0.879000
+test epochs: 95  avg_cost: 0.396933  accuracy: 0.885000
+train epochs: 96  avg_cost: 0.405633  avg_ones: 18.971000  accuracy: 0.878000
+test epochs: 96  avg_cost: 0.395366  accuracy: 0.884000
+train epochs: 97  avg_cost: 0.401961  avg_ones: 18.996000  accuracy: 0.880000
+test epochs: 97  avg_cost: 0.394538  accuracy: 0.883000
+train epochs: 98  avg_cost: 0.400162  avg_ones: 19.028000  accuracy: 0.880000
+test epochs: 98  avg_cost: 0.394233  accuracy: 0.886000
+train epochs: 99  avg_cost: 0.396933  avg_ones: 19.043000  accuracy: 0.884000
+test epochs: 99  avg_cost: 0.396500  accuracy: 0.885000

@@ -1,0 +1,137 @@
+//network model: fully connected, only exitatory neuron
+
+load_file("neuronTemp_pr.hoc")
+
+begintemplate fullynet
+public outstim, outstim2, inputI, inputS, inputP, vclamp //proc
+public num_in, num_out, wmax, winitial, inputStart, natureIn, tau //parameters
+public cell_post, cell_pre
+public pre, post //cell
+public stimIn, stimIn1, stimOut, stimOut2 //stimuli
+public slist
+
+objectvar pre[1], post[1]
+objectvar stimIn[1], stimIn1[1], stimOut[1], stimOut2[1]
+objectvar inputSyn[1],outputSyn[1]
+objectvar netconpre[1], netconpost[1] //connections
+objectvar wstdp[1]
+double winitial[1], tau[1], cell_post[1], cell_pre[1]
+objectvar slist[1]
+
+proc init(){local i
+	
+	//parameters
+	num_in = $1
+	num_out = $2
+	num_neuron=(num_in+num_out)*2
+	num_total = num_in*num_out
+	
+	double winitial[num_total]
+	double tau[num_total]
+	for i=0, num_total-1{
+			winitial[i]=$&15[i]
+			tau[i]=$&16[i]
+	}
+	
+	natureIn = $17
+	density = $18
+	inputStart = 10
+	
+	objectvar pre[num_in], post[num_out]
+	objectvar stimIn[num_in], stimIn1[num_in], stimOut[num_out], stimOut2[num_out]
+	objectvar inputSyn[num_in],outputSyn[num_total]
+	objectvar netconpre[num_total], netconpost[num_total]
+	objectvar wstdp[num_total]
+	objectvar slist[num_neuron]
+
+	//initial the section list 
+	for i=0, num_neuron-1{	
+		slist[i]=new SectionList()
+	}
+	
+	///////////////////////////////////////////////////////////////
+	//build network connections through synapse
+	///////////////////////////////////////////////////////////////
+	//connections between input stimuli and input neuron
+	for i = 0, num_in - 1 {
+		pre[i] = new neuronModel($3,$4,$&5[i],$&6[i],$&8[i],$&9[i],$&10[i],$&11[i],$&12[i],$&13[i],$&14[i])
+		
+		access pre[i].soma
+		slist[i].append()
+		access pre[i].dend
+		slist[i].append()
+
+		//for stimuli
+		pre[i].soma inputSyn[i] = new ExpSyn(0)
+		inputSyn[i].e = 0
+		stimIn[i] = new NetStim(1)
+		stimIn[i].noise = 0
+		stimIn[i].start = 0
+		stimIn[i].number = 0
+		pre[i].nclist.append(new NetCon(stimIn[i],inputSyn[i],0,0,1))
+	} 
+
+	//connections between input and output neurons
+	for j = 0, num_out - 1 {
+		post[j] = new neuronModel($3,$4,$&5[num_in+j],0,$&8[num_in+j],$&9[num_in+j],$&10[num_in+j],$&11[num_in+j],$&12[num_in+j],$&13[num_in+j],$&14[num_in+j])
+		
+		access post[j].soma
+		slist[num_in+j].append()
+		access post[j].dend
+		slist[num_in+j].append()
+
+		for i = 0, num_in - 1 {
+			post[j].dend outputSyn[j*num_in+i] = new alpha1(0)
+			outputSyn[j*num_in+i].tau= tau[i]
+			outputSyn[j*num_in+i].e=0
+			outputSyn[j*num_in+i].delay=natureIn
+		}	
+	}
+	
+	for j = 0, num_out -1 {
+		for i = 0, num_in - 1 { 
+			pre[i].soma post[j].nclist.append(new NetCon(&v(1),outputSyn[j*num_in+i],-10,natureIn,winitial[j*num_in+i]))
+		}
+	}
+
+}//end proc init
+
+
+proc inputI(){local i
+	for i=0, num_in-1{
+		w=$&1[i]
+		pre[i].soma stimIn[i] = new IClamp(0.5)
+		stimIn[i].del = 55
+		stimIn[i].dur = 100
+		stimIn[i].amp = $2
+	
+		// Low frequency inputs do not stimulate neurons
+		if(w <= 1.0/90){
+			stimIn[i].del = 0
+			stimIn[i].dur = 0
+			stimIn[i].amp = 0
+		}
+
+	}
+}
+
+
+proc inputS(){local i
+	for i=0, num_in-1{
+		w=$&1[i]
+		stimIn[i].start = 0//inputStart
+		stimIn[i].interval = 1000
+		stimIn[i].number=1
+		stimIn[i].noise=0
+
+		if(w <= 1.0/90){
+			stimIn[i].interval = 0
+			stimIn[i].number= 0
+			stimIn[i].noise= 0
+	
+	}
+
+	}
+}
+
+endtemplate fullynet
