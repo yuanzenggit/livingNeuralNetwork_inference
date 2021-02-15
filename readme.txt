@@ -13,7 +13,7 @@ Reproduce the result:
 	 -> python3 ./2_accuracyCompare/result/plot/graph.py to generate Fig 4(c)
 	 -> To generate the raw data
 	  -> python3 ./2_accuracyCompare/tensorflow_compModel.py to get computational model result
-	  -> python3 ./2_accuracyCompare/biophy/run.sh to get biophysical model result
+	  -> ./2_accuracyCompare/biophy/run.sh to get biophysical model result
 
 3) Algorithm and network optimization experiment under: 3_optimization
 	 -> python3 ./3_optimization/result/sparse/graph.py to generate Fig 5(a)
