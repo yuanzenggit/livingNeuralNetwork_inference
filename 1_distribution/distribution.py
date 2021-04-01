@@ -83,7 +83,7 @@ for cellnum in range (0,9): #different post synaptic neuron
 						double in_gmax_cal[totalNeuron]
 						double in_gmax_kcRT03[totalNeuron]
 
-						delay=0
+						double delay[totalSyn]
 						double weights1[totalSyn]
 						double tau[totalSyn]
 						''')

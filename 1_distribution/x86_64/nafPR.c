@@ -1,4 +1,4 @@
-/* Created by Language version: 6.2.0 */
+/* Created by Language version: 7.7.0 */
 /* NOT VECTORIZED */
 #define NRN_VECTORIZED 0
 #include <stdio.h>
@@ -82,6 +82,15 @@ extern void hoc_register_limits(int, HocParmLimits*);
 extern void hoc_register_units(int, HocParmUnits*);
 extern void nrn_promote(Prop*, int, int);
 extern Memb_func* memb_func;
+ 
+#define NMODL_TEXT 1
+#if NMODL_TEXT
+static const char* nmodl_file_text;
+static const char* nmodl_filename;
+extern void hoc_reg_nmodl_text(int, const char*);
+extern void hoc_reg_nmodl_filename(int, const char*);
+#endif
+
  extern void _nrn_setdata_reg(int, void(*)(Prop*));
  static void _setdata(Prop* _prop) {
  _p = _prop->param; _ppvar = _prop->dparam;
@@ -217,7 +226,7 @@ static void _ode_matsol(_NrnThread*, _Memb_list*, int);
  static void _ode_matsol_instance1(_threadargsproto_);
  /* connect range variables in _p that hoc is supposed to know about */
  static const char *_mechanism[] = {
- "6.2.0",
+ "7.7.0",
 "nafPR",
  "gmax_nafPR",
  "vrest_nafPR",
@@ -271,6 +280,10 @@ extern void _cvode_abstol( Symbol**, double*, int);
  _mechtype = nrn_get_mechtype(_mechanism[1]);
      _nrn_setdata_reg(_mechtype, _setdata);
      _nrn_thread_reg(_mechtype, 2, _update_ion_pointer);
+ #if NMODL_TEXT
+  hoc_reg_nmodl_text(_mechtype, nmodl_file_text);
+  hoc_reg_nmodl_filename(_mechtype, nmodl_filename);
+#endif
   hoc_register_prop_size(_mechtype, 8, 3);
   hoc_register_dparam_semantics(_mechtype, 0, "na_ion");
   hoc_register_dparam_semantics(_mechtype, 1, "na_ion");
@@ -278,7 +291,7 @@ extern void _cvode_abstol( Symbol**, double*, int);
  	hoc_register_cvode(_mechtype, _ode_count, _ode_map, _ode_spec, _ode_matsol);
  	hoc_register_tolerance(_mechtype, _hoc_state_tol, &_atollist);
  	hoc_register_var(hoc_scdoub, hoc_vdoub, hoc_intfunc);
- 	ivoc_help("help ?1 nafPR /home/yuz615/frontierNS20/4distribution/x86_64/nafPR.mod\n");
+ 	ivoc_help("help ?1 nafPR /home/yuz615/livingNeuralNetwork_inference/1_distribution/modfile/nafPR.mod\n");
  hoc_register_limits(_mechtype, _hoc_parm_limits);
  hoc_register_units(_mechtype, _hoc_parm_units);
  }
@@ -309,7 +322,7 @@ static int _ode_spec1(_threadargsproto_);
  static int _ode_matsol1 () {
  mh ( _threadargscomma_ v ) ;
  Dh = Dh  / (1. - dt*( ( ( - 1.0 ) ) / Tau[1] )) ;
- return 0;
+  return 0;
 }
  /*END CVODE*/
  static int states () {_reset=0;
@@ -612,3 +625,176 @@ static void _initlists() {
  _slist1[0] = &(h) - _p;  _dlist1[0] = &(Dh) - _p;
 _first = 0;
 }
+
+#if NMODL_TEXT
+static const char* nmodl_filename = "/home/yuz615/livingNeuralNetwork_inference/1_distribution/modfile/nafPR.mod";
+static const char* nmodl_file_text = 
+  ": $Id: nafPR.mod,v 1.6 2004/02/09 21:19:55 billl Exp $\n"
+  "\n"
+  "INDEPENDENT {t FROM 0 TO 1 WITH 1 (ms)}\n"
+  "\n"
+  "NEURON { SUFFIX nafPR }\n"
+  "NEURON {  USEION na WRITE ina }\n"
+  "ASSIGNED { ina }\n"
+  "\n"
+  "PARAMETER {\n"
+  "	erev 		=  44  (mV)\n"
+  "	gmax 		= 0.030    (mho/cm2)\n"
+  "  vrest   = 0\n"
+  "	exptemp		= 37\n"
+  "	maflag 		= 3\n"
+  "	malphaA 	= -0.32 \n"
+  "	malphaB		= -4 \n"
+  "	malphaV0	= 13.1 \n"
+  "	\n"
+  "	mbflag 		= 3\n"
+  "	mbetaA 		= 0.8 :0.28\n"
+  "	mbetaB		= 5.0\n"
+  "	mbetaV0		= 40.1 \n"
+  "	mq10		= 3\n"
+  "	mexp 		= -2\n"
+  "\n"
+  "	haflag 		= 1\n"
+  "	halphaA 	= 0.128\n"
+  "	halphaB		= -18\n"
+  "	halphaV0	= 17\n"
+  "\n"
+  "	hbflag 		= 2\n"
+  "	hbetaA 		= 4\n"
+  "	hbetaB		= -5 \n"
+  "	hbetaV0		= 40 \n"
+  "	hq10		= 3\n"
+  "	hexp 		= 1\n"
+  "\n"
+  "	celsius			   (degC)\n"
+  "	dt 				   (ms)\n"
+  "	v 			       (mV)\n"
+  "\n"
+  "} : end PARAMETER\n"
+  "\n"
+  "NEURON {\n"
+  "	RANGE gmax, g, i, vrest\n"
+  "	GLOBAL erev, Inf, Tau, qq10\n"
+  "} : end NEURON\n"
+  "\n"
+  "CONSTANT {\n"
+  "	  FARADAY = 96489.0	: Faraday's constant\n"
+  "	  R= 8.31441		: Gas constant\n"
+  "\n"
+  "} : end CONSTANT\n"
+  "\n"
+  "UNITS {\n"
+  "	(mA) = (milliamp)\n"
+  "	(mV) = (millivolt)\n"
+  "	(umho) = (micromho)\n"
+  "} : end UNITS\n"
+  "\n"
+  "ASSIGNED {\n"
+  "	i (mA/cm^2)		\n"
+  "	g (mho/cm^2)\n"
+  "	Inf[2]		: 0 = m and 1 = h\n"
+  "	Tau[2]		: 0 = m and 1 = h\n"
+  "        qq10[2]\n"
+  "} : end ASSIGNED \n"
+  "\n"
+  "STATE { h }\n"
+  "\n"
+  "INITIAL { \n"
+  " 	mh(v)\n"
+  "	h = Inf[1]\n"
+  "}\n"
+  "\n"
+  "BREAKPOINT {\n"
+  "\n"
+  "  SOLVE states METHOD cnexp\n"
+  "  mh(v)\n"
+  "  g = gmax * Inf[0]*Inf[0] * h\n"
+  "  i = g*(v-erev) \n"
+  "  ina=i\n"
+  "} : end BREAKPOINT\n"
+  "\n"
+  ": ASSIGNMENT PROCEDURES\n"
+  ": Must be given by a user routines in parameters.multi\n"
+  ": E.G.:\n"
+  ":   PROCEDURE iassign () { i = g*(v-erev) ina=i }\n"
+  ":   PROCEDURE iassign () { i = g*ghkca(v) ica=i }\n"
+  "\n"
+  ":-------------------------------------------------------------------\n"
+  "\n"
+  "DERIVATIVE states {\n"
+  "	mh(v)\n"
+  "	h' = (-h + Inf[1]) / Tau[1]\n"
+  " }\n"
+  "\n"
+  ":-------------------------------------------------------------------\n"
+  ": NOTE : 0 = m and 1 = h\n"
+  "PROCEDURE mh (v) {\n"
+  "	LOCAL a, b, j\n"
+  "\n"
+  "	qq10[0] = mq10^((celsius-exptemp)/10.)	\n"
+  "	qq10[1] = hq10^((celsius-exptemp)/10.)	\n"
+  "\n"
+  "	: Calculater Inf and Tau values for h and m\n"
+  "	FROM j = 0 TO 1 {\n"
+  "		a = alpha (v, j)\n"
+  "		b = beta (v, j)\n"
+  "\n"
+  "		Inf[j] = a / (a + b)\n"
+  "		Tau[j] = 1. / (a + b) / qq10[j]\n"
+  "		if (hexp==0) { Tau[1] = 1. Inf[1] = 1.}\n"
+  "	}\n"
+  "} : end PROCEDURE mh (v)\n"
+  "\n"
+  ":-------------------------------------------------------------------\n"
+  "FUNCTION alpha(v,j) {\n"
+  "  LOCAL flag, A, B, V0\n"
+  "  if (j==1 && hexp==0) {\n"
+  "	  alpha = 0\n"
+  "  } else {\n"
+  "\n"
+  "     if (j == 1) {\n"
+  "	  A = halphaA B = halphaB V0 = halphaV0+vrest flag = haflag\n"
+  "     } else {\n"
+  "	  A = malphaA B = malphaB V0 = malphaV0+vrest flag = maflag\n"
+  "     }\n"
+  "\n"
+  "     if (flag == 1) { :  EXPONENTIAL\n"
+  "	 alpha = A*exp((v-V0)/B)	\n"
+  "     } else if (flag == 2) { :  SIGMOID\n"
+  "	 alpha = A/(exp((v-V0)/B)+1)\n"
+  "     } else if (flag == 3) { :  LINOID\n"
+  "	 if(v == V0) {\n"
+  "           alpha = A*B\n"
+  "         } else {\n"
+  "           alpha = A*(v-V0)/(exp((v-V0)/B)-1) }\n"
+  "     }\n"
+  "}\n"
+  "} : end FUNCTION alpha (v,j)\n"
+  "\n"
+  ":-------------------------------------------------------------------\n"
+  "FUNCTION beta (v,j) {\n"
+  "  LOCAL flag, A, B, V0\n"
+  "  if (j==1 && hexp==0) {\n"
+  "	  beta = 1\n"
+  "  } else {\n"
+  "\n"
+  "     if (j == 1) {\n"
+  "	  A = hbetaA B = hbetaB V0 = hbetaV0+vrest flag = hbflag\n"
+  "     } else {\n"
+  "	  A = mbetaA B = mbetaB V0 = mbetaV0+vrest flag = mbflag\n"
+  "     }\n"
+  "\n"
+  "    if (flag == 1) { :  EXPONENTIAL\n"
+  "	 beta = A*exp((v-V0)/B)\n"
+  "     } else if (flag == 2) { :  SIGMOID\n"
+  "	 beta = A/(exp((v-V0)/B)+1)\n"
+  "     } else if (flag == 3) { :  LINOID\n"
+  "	 if(v == V0) {\n"
+  "            beta = A*B \n"
+  "         } else {\n"
+  "            beta = A*(v-V0)/(exp((v-V0)/B)-1) }\n"
+  "     }\n"
+  "}\n"
+  "} : end FUNCTION beta (v,j)\n"
+  ;
+#endif

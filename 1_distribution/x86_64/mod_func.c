@@ -18,16 +18,16 @@ void modl_reg(){
   if (!nrn_nobanner_) if (nrnmpi_myid < 1) {
     fprintf(stderr, "Additional mechanisms from files\n");
 
-    fprintf(stderr," modfile//alpha1.mod");
-    fprintf(stderr," modfile//cal.mod");
-    fprintf(stderr," modfile//CHR2.mod");
-    fprintf(stderr," modfile//expsyn1.mod");
-    fprintf(stderr," modfile//kcRT03.mod");
-    fprintf(stderr," modfile//kdr.mod");
-    fprintf(stderr," modfile//nafPR.mod");
-    fprintf(stderr," modfile//passiv.mod");
-    fprintf(stderr," modfile//rcadecay.mod");
-    fprintf(stderr," modfile//rkq.mod");
+    fprintf(stderr," \"modfile//alpha1.mod\"");
+    fprintf(stderr," \"modfile//cal.mod\"");
+    fprintf(stderr," \"modfile//CHR2.mod\"");
+    fprintf(stderr," \"modfile//expsyn1.mod\"");
+    fprintf(stderr," \"modfile//kcRT03.mod\"");
+    fprintf(stderr," \"modfile//kdr.mod\"");
+    fprintf(stderr," \"modfile//nafPR.mod\"");
+    fprintf(stderr," \"modfile//passiv.mod\"");
+    fprintf(stderr," \"modfile//rcadecay.mod\"");
+    fprintf(stderr," \"modfile//rkq.mod\"");
     fprintf(stderr, "\n");
   }
   _alpha1_reg();

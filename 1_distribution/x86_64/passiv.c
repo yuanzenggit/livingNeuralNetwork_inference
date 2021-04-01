@@ -1,4 +1,4 @@
-/* Created by Language version: 6.2.0 */
+/* Created by Language version: 7.7.0 */
 /* VECTORIZED */
 #define NRN_VECTORIZED 1
 #include <stdio.h>
@@ -73,6 +73,15 @@ extern void hoc_register_limits(int, HocParmLimits*);
 extern void hoc_register_units(int, HocParmUnits*);
 extern void nrn_promote(Prop*, int, int);
 extern Memb_func* memb_func;
+ 
+#define NMODL_TEXT 1
+#if NMODL_TEXT
+static const char* nmodl_file_text;
+static const char* nmodl_filename;
+extern void hoc_reg_nmodl_text(int, const char*);
+extern void hoc_reg_nmodl_filename(int, const char*);
+#endif
+
  extern void _nrn_setdata_reg(int, void(*)(Prop*));
  static void _setdata(Prop* _prop) {
  _extcall_prop = _prop;
@@ -114,7 +123,7 @@ static void nrn_state(_NrnThread*, _Memb_list*, int);
 static void  nrn_jacob(_NrnThread*, _Memb_list*, int);
  /* connect range variables in _p that hoc is supposed to know about */
  static const char *_mechanism[] = {
- "6.2.0",
+ "7.7.0",
 "Pass",
  "g_Pass",
  "erev_Pass",
@@ -150,9 +159,13 @@ extern void _cvode_abstol( Symbol**, double*, int);
  	register_mech(_mechanism, nrn_alloc,nrn_cur, nrn_jacob, nrn_state, nrn_init, hoc_nrnpointerindex, 1);
  _mechtype = nrn_get_mechtype(_mechanism[1]);
      _nrn_setdata_reg(_mechtype, _setdata);
+ #if NMODL_TEXT
+  hoc_reg_nmodl_text(_mechtype, nmodl_file_text);
+  hoc_reg_nmodl_filename(_mechtype, nmodl_filename);
+#endif
   hoc_register_prop_size(_mechtype, 5, 0);
  	hoc_register_var(hoc_scdoub, hoc_vdoub, hoc_intfunc);
- 	ivoc_help("help ?1 Pass /home/yuz615/frontierNS20/4distribution/x86_64/passiv.mod\n");
+ 	ivoc_help("help ?1 Pass /home/yuz615/livingNeuralNetwork_inference/1_distribution/modfile/passiv.mod\n");
  hoc_register_limits(_mechtype, _hoc_parm_limits);
  hoc_register_units(_mechtype, _hoc_parm_units);
  }
@@ -277,4 +290,106 @@ _first = 0;
 
 #if defined(__cplusplus)
 } /* extern "C" */
+#endif
+
+#if NMODL_TEXT
+static const char* nmodl_filename = "/home/yuz615/livingNeuralNetwork_inference/1_distribution/modfile/passiv.mod";
+static const char* nmodl_file_text = 
+  "TITLE passive membrane channel\n"
+  "\n"
+  "UNITS {\n"
+  "	(mV) = (millivolt)\n"
+  "	(mA) = (milliamp)\n"
+  "}\n"
+  "\n"
+  "INDEPENDENT { v FROM -100 TO 50 WITH 50	(mV) }\n"
+  "\n"
+  "NEURON {\n"
+  "	SUFFIX Pass\n"
+  "	NONSPECIFIC_CURRENT i\n"
+  "	RANGE g,erev\n"
+  "}\n"
+  "\n"
+  "PARAMETER {\n"
+  "	g = .001	(mho/cm2)\n"
+  "	erev = -70	(mV)\n"
+  "}\n"
+  "\n"
+  "ASSIGNED { i	(mA/cm2)}\n"
+  "\n"
+  "BREAKPOINT {\n"
+  "	i = g*(v - erev)\n"
+  "}\n"
+  "\n"
+  "COMMENT\n"
+  "The passive channel is very simple but illustrates several features of\n"
+  "the interface to NEURON. As a SCoP or hoc model the NEURON block is\n"
+  "ignored.  About the only thing you can do with this as an isolated channel\n"
+  "in SCoP is plot the current vs the potential. Notice that models require\n"
+  "that all variables be declared, The calculation is done in the EQUATION\n"
+  "block (This name may eventually be changed to MODEL).  The intended\n"
+  "semantics of the equation block are that after the block is executed, ALL\n"
+  "variables are consistent with the value of the independent variable.\n"
+  "In this case, of course a trivial assignment statement suffices.\n"
+  "In SCoP, INDEPENDENT gives the name and range of the independent variable,\n"
+  "CONSTANT declares variables which generally do not change during\n"
+  "solution of the EQUATION block and ASSIGNED declares variables which\n"
+  "get values via assignment statements (as opposed to STATE variables whose\n"
+  "values can only be determined by solving differential or simultaneous\n"
+  "algebraic equations.)  The values of CONSTANTS are the default values\n"
+  "and can be changed in SCoP.\n"
+  "\n"
+  "The NEURON block serves as the interface to NEURON. One has to imagine\n"
+  "many models linked to NEURON at the same time. Therefore in order to\n"
+  "avoid conflicts with names of variables in other mechanisms a SUFFIX\n"
+  "is applied to all the declared names that are accessible from NEURON.\n"
+  "Accessible CONSTANTS are of two types. Those appearing in the\n"
+  "PARAMETER list become range variables that can be used in any section\n"
+  "in which the mechanism is \"insert\"ed.  CONSTANT's that do not appear in\n"
+  "the PARAMETER list become global scalars which are the same for every\n"
+  "section.  ASSIGNED variables and STATE variables also become range variables\n"
+  "that depend on position in a section.\n"
+  "NONSPECIFIC_CURRENT specifies a list of currents not associated with\n"
+  "any particular ion but computed by this model\n"
+  "that affect the calculation of the membrane potential. I.e. a nonspecific\n"
+  "current adds its contribution to the total membrane current.\n"
+  "\n"
+  "The following  neuron program is suitable for investigating the behavior\n"
+  "of the channel and determining its effect on the membrane.\n"
+  "create a\n"
+  "access a\n"
+  "nseg = 1\n"
+  "insert Passive\n"
+  "g_Passive=.001\n"
+  "erev_Passive=0\n"
+  "proc cur() {\n"
+  "	axis(0,1,1,0,.001,1) axis()\n"
+  "	plot(1)\n"
+  "	for (v=0; v < 1; v=v+.01) {\n"
+  "		fcurrent()\n"
+  "		plot(v, i_Passive)\n"
+  "	}\n"
+  "	plt(-1)\n"
+  "}	\n"
+  "\n"
+  "proc run() {\n"
+  "	axis(0,3,3,0,1,1) axis()\n"
+  "	t = 0\n"
+  "	v=1\n"
+  "	plot(1)\n"
+  "	while (t < 3) {\n"
+  "		plot(t,v)\n"
+  "		fadvance()\n"
+  "	}\n"
+  "}\n"
+  "/* the cur() procedure uses the fcurrent() function of neuron to calculate\n"
+  "all the currents and conductances with all states (including v) held\n"
+  "constant.  In the run() procedure fadvance() integrates all equations\n"
+  "by one time step. In this case the Passive channel in combination with\n"
+  "the default capacitance of 1uF/cm2 give a membrane with a time constant of\n"
+  "1 ms. Thus the voltage decreases exponentially toward 0 from its initial\n"
+  "value of 1.\n"
+  "\n"
+  "ENDCOMMENT\n"
+  ;
 #endif

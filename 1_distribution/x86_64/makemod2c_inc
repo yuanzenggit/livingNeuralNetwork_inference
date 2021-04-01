@@ -1,0 +1,81 @@
+
+./alpha1.c: ../modfile//alpha1.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\n"
+	(cd "../modfile"; MODLUNIT=$(NRNUNITS) $(NOCMODL) alpha1.mod -o "/home/yuz615/livingNeuralNetwork_inference/1_distribution/x86_64")
+
+./alpha1.o: ./alpha1.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\n"
+	$(COMPILE) -I"../modfile" $(INCLUDES) -fPIC -c $< -o $@
+
+./cal.c: ../modfile//cal.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\n"
+	(cd "../modfile"; MODLUNIT=$(NRNUNITS) $(NOCMODL) cal.mod -o "/home/yuz615/livingNeuralNetwork_inference/1_distribution/x86_64")
+
+./cal.o: ./cal.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\n"
+	$(COMPILE) -I"../modfile" $(INCLUDES) -fPIC -c $< -o $@
+
+./CHR2.c: ../modfile//CHR2.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\n"
+	(cd "../modfile"; MODLUNIT=$(NRNUNITS) $(NOCMODL) CHR2.mod -o "/home/yuz615/livingNeuralNetwork_inference/1_distribution/x86_64")
+
+./CHR2.o: ./CHR2.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\n"
+	$(COMPILE) -I"../modfile" $(INCLUDES) -fPIC -c $< -o $@
+
+./expsyn1.c: ../modfile//expsyn1.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\n"
+	(cd "../modfile"; MODLUNIT=$(NRNUNITS) $(NOCMODL) expsyn1.mod -o "/home/yuz615/livingNeuralNetwork_inference/1_distribution/x86_64")
+
+./expsyn1.o: ./expsyn1.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\n"
+	$(COMPILE) -I"../modfile" $(INCLUDES) -fPIC -c $< -o $@
+
+./kcRT03.c: ../modfile//kcRT03.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\n"
+	(cd "../modfile"; MODLUNIT=$(NRNUNITS) $(NOCMODL) kcRT03.mod -o "/home/yuz615/livingNeuralNetwork_inference/1_distribution/x86_64")
+
+./kcRT03.o: ./kcRT03.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\n"
+	$(COMPILE) -I"../modfile" $(INCLUDES) -fPIC -c $< -o $@
+
+./kdr.c: ../modfile//kdr.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\n"
+	(cd "../modfile"; MODLUNIT=$(NRNUNITS) $(NOCMODL) kdr.mod -o "/home/yuz615/livingNeuralNetwork_inference/1_distribution/x86_64")
+
+./kdr.o: ./kdr.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\n"
+	$(COMPILE) -I"../modfile" $(INCLUDES) -fPIC -c $< -o $@
+
+./nafPR.c: ../modfile//nafPR.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\n"
+	(cd "../modfile"; MODLUNIT=$(NRNUNITS) $(NOCMODL) nafPR.mod -o "/home/yuz615/livingNeuralNetwork_inference/1_distribution/x86_64")
+
+./nafPR.o: ./nafPR.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\n"
+	$(COMPILE) -I"../modfile" $(INCLUDES) -fPIC -c $< -o $@
+
+./passiv.c: ../modfile//passiv.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\n"
+	(cd "../modfile"; MODLUNIT=$(NRNUNITS) $(NOCMODL) passiv.mod -o "/home/yuz615/livingNeuralNetwork_inference/1_distribution/x86_64")
+
+./passiv.o: ./passiv.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\n"
+	$(COMPILE) -I"../modfile" $(INCLUDES) -fPIC -c $< -o $@
+
+./rcadecay.c: ../modfile//rcadecay.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\n"
+	(cd "../modfile"; MODLUNIT=$(NRNUNITS) $(NOCMODL) rcadecay.mod -o "/home/yuz615/livingNeuralNetwork_inference/1_distribution/x86_64")
+
+./rcadecay.o: ./rcadecay.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\n"
+	$(COMPILE) -I"../modfile" $(INCLUDES) -fPIC -c $< -o $@
+
+./rkq.c: ../modfile//rkq.mod
+	@printf " -> $(C_GREEN)NMODL$(C_RESET) $<\n"
+	(cd "../modfile"; MODLUNIT=$(NRNUNITS) $(NOCMODL) rkq.mod -o "/home/yuz615/livingNeuralNetwork_inference/1_distribution/x86_64")
+
+./rkq.o: ./rkq.c
+	@printf " -> $(C_GREEN)Compiling$(C_RESET) $<\n"
+	$(COMPILE) -I"../modfile" $(INCLUDES) -fPIC -c $< -o $@
+

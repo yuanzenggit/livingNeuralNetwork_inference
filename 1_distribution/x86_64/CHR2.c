@@ -1,4 +1,4 @@
-/* Created by Language version: 6.2.0 */
+/* Created by Language version: 7.7.0 */
 /* VECTORIZED */
 #define NRN_VECTORIZED 1
 #include <stdio.h>
@@ -84,6 +84,15 @@ extern void hoc_register_limits(int, HocParmLimits*);
 extern void hoc_register_units(int, HocParmUnits*);
 extern void nrn_promote(Prop*, int, int);
 extern Memb_func* memb_func;
+ 
+#define NMODL_TEXT 1
+#if NMODL_TEXT
+static const char* nmodl_file_text;
+static const char* nmodl_filename;
+extern void hoc_reg_nmodl_text(int, const char*);
+extern void hoc_reg_nmodl_filename(int, const char*);
+#endif
+
  extern void _nrn_setdata_reg(int, void(*)(Prop*));
  static void _setdata(Prop* _prop) {
  _extcall_prop = _prop;
@@ -135,7 +144,7 @@ static void nrn_state(_NrnThread*, _Memb_list*, int);
 static void  nrn_jacob(_NrnThread*, _Memb_list*, int);
  /* connect range variables in _p that hoc is supposed to know about */
  static const char *_mechanism[] = {
- "6.2.0",
+ "7.7.0",
 "CHR2",
  "N_CHR2",
  "e_CHR2",
@@ -180,9 +189,13 @@ extern void _cvode_abstol( Symbol**, double*, int);
  	register_mech(_mechanism, nrn_alloc,nrn_cur, nrn_jacob, nrn_state, nrn_init, hoc_nrnpointerindex, 1);
  _mechtype = nrn_get_mechtype(_mechanism[1]);
      _nrn_setdata_reg(_mechtype, _setdata);
+ #if NMODL_TEXT
+  hoc_reg_nmodl_text(_mechtype, nmodl_file_text);
+  hoc_reg_nmodl_filename(_mechtype, nmodl_filename);
+#endif
   hoc_register_prop_size(_mechtype, 16, 0);
  	hoc_register_var(hoc_scdoub, hoc_vdoub, hoc_intfunc);
- 	ivoc_help("help ?1 CHR2 /home/yuz615/frontierNS20/4distribution/x86_64/CHR2.mod\n");
+ 	ivoc_help("help ?1 CHR2 /home/yuz615/livingNeuralNetwork_inference/1_distribution/modfile/CHR2.mod\n");
  hoc_register_limits(_mechtype, _hoc_parm_limits);
  hoc_register_units(_mechtype, _hoc_parm_units);
  }
@@ -328,4 +341,85 @@ _first = 0;
 
 #if defined(__cplusplus)
 } /* extern "C" */
+#endif
+
+#if NMODL_TEXT
+static const char* nmodl_filename = "/home/yuz615/livingNeuralNetwork_inference/1_distribution/modfile/CHR2.mod";
+static const char* nmodl_file_text = 
+  "TITLE CHR2\n"
+  "\n"
+  "UNITS {\n"
+  "	(mV) = (millivolt)\n"
+  "	(pA) = (picoamp)\n"
+  "	(mA) = (milliamp)\n"
+  "	(nS) = (nanosiemens)\n"
+  "	(S)  = (siemens)\n"
+  "	(mS) = (millisiemens)\n"
+  "	(uS) = (microsiemens)\n"
+  "}\n"
+  "\n"
+  "NEURON {\n"
+  "	SUFFIX CHR2\n"
+  "	RANGE lighton, lightoff, pmax, p, gCHR2, N,e , E, ka\n"
+  "	NONSPECIFIC_CURRENT i\n"
+  "}\n"
+  "\n"
+  "INDEPENDENT { t FROM 0 TO 1 WITH 1 (ms) }\n"
+  "\n"
+  "PARAMETER {\n"
+  "	N\n"
+  "\n"
+  "\n"
+  "	lambda = 50e-6\n"
+  "	Sretinal = 1.2e-8\n"
+  "\n"
+  "	kd = 0.1\n"
+  "	e\n"
+  "	lighton  (ms)\n"
+  "	lightoff (ms)\n"
+  "}\n"
+  "\n"
+  "\n"
+  "ASSIGNED {\n"
+  "	v  (mV)\n"
+  "	i  (mA/cm2)\n"
+  "	p pmax\n"
+  "	lightdur\n"
+  "	gCHR2 (S/cm2)\n"
+  "	ka a kac\n"
+  "	E\n"
+  "	phi\n"
+  "}\n"
+  "\n"
+  "BREAKPOINT{\n"
+  "\n"
+  "	if((t > lighton)&&(t < lightoff)){\n"
+  "		E=e\n"
+  "	}else{\n"
+  "		E=0\n"
+  "	}\n"
+  "	\n"
+  "	lightdur=lightoff-lighton\n"
+  "	phi = E*1e-6*1e-3*1e-3*470e-9/6.63e-34/3e8\n"
+  "\n"
+  "	\n"
+  "	ka = 0.5*phi*Sretinal\n"
+  "	kac = 0.5*Sretinal*10*1e-6*1e-3*1e-3*470e-9/6.63e-34/3e8\n"
+  "\n"
+  "	pmax = (kac/(kac+kd) - (kac/(kac+kd)*exp(-(kac+kd)*lightdur)))\n"
+  "	\n"
+  "	if(e==0){\n"
+  "		p=0\n"
+  "	}\n"
+  "	else if((t > lighton)&&(t < lightoff)){\n"
+  "		p = (ka/(ka+kd) - (ka/(ka+kd)*exp(-(ka+kd)*(t-lighton))))\n"
+  "	}else if (t > lightoff){\n"
+  "		p = pmax*exp(-(t-lightoff)*kd)\n"
+  "	}\n"
+  "\n"
+  "	gCHR2 = p*N*lambda\n"
+  "	i = (0.1)*gCHR2 * v\n"
+  "}\n"
+  "\n"
+  ;
 #endif

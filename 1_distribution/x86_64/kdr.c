@@ -1,4 +1,4 @@
-/* Created by Language version: 6.2.0 */
+/* Created by Language version: 7.7.0 */
 /* NOT VECTORIZED */
 #define NRN_VECTORIZED 0
 #include <stdio.h>
@@ -88,6 +88,15 @@ extern void hoc_register_limits(int, HocParmLimits*);
 extern void hoc_register_units(int, HocParmUnits*);
 extern void nrn_promote(Prop*, int, int);
 extern Memb_func* memb_func;
+ 
+#define NMODL_TEXT 1
+#if NMODL_TEXT
+static const char* nmodl_file_text;
+static const char* nmodl_filename;
+extern void hoc_reg_nmodl_text(int, const char*);
+extern void hoc_reg_nmodl_filename(int, const char*);
+#endif
+
  extern void _nrn_setdata_reg(int, void(*)(Prop*));
  static void _setdata(Prop* _prop) {
  _p = _prop->param; _ppvar = _prop->dparam;
@@ -244,7 +253,7 @@ static void _ode_matsol(_NrnThread*, _Memb_list*, int);
  static void _ode_matsol_instance1(_threadargsproto_);
  /* connect range variables in _p that hoc is supposed to know about */
  static const char *_mechanism[] = {
- "6.2.0",
+ "7.7.0",
 "kdr",
  "gmax_kdr",
  "vrest_kdr",
@@ -299,6 +308,10 @@ extern void _cvode_abstol( Symbol**, double*, int);
  _mechtype = nrn_get_mechtype(_mechanism[1]);
      _nrn_setdata_reg(_mechtype, _setdata);
      _nrn_thread_reg(_mechtype, 2, _update_ion_pointer);
+ #if NMODL_TEXT
+  hoc_reg_nmodl_text(_mechtype, nmodl_file_text);
+  hoc_reg_nmodl_filename(_mechtype, nmodl_filename);
+#endif
   hoc_register_prop_size(_mechtype, 10, 3);
   hoc_register_dparam_semantics(_mechtype, 0, "k_ion");
   hoc_register_dparam_semantics(_mechtype, 1, "k_ion");
@@ -306,7 +319,7 @@ extern void _cvode_abstol( Symbol**, double*, int);
  	hoc_register_cvode(_mechtype, _ode_count, _ode_map, _ode_spec, _ode_matsol);
  	hoc_register_tolerance(_mechtype, _hoc_state_tol, &_atollist);
  	hoc_register_var(hoc_scdoub, hoc_vdoub, hoc_intfunc);
- 	ivoc_help("help ?1 kdr /home/yuz615/frontierNS20/4distribution/x86_64/kdr.mod\n");
+ 	ivoc_help("help ?1 kdr /home/yuz615/livingNeuralNetwork_inference/1_distribution/modfile/kdr.mod\n");
  hoc_register_limits(_mechtype, _hoc_parm_limits);
  hoc_register_units(_mechtype, _hoc_parm_units);
  }
@@ -340,7 +353,7 @@ static int _ode_spec1(_threadargsproto_);
  mh ( _threadargscomma_ v ) ;
  Dm = Dm  / (1. - dt*( ( ( - 1.0 ) ) / Tau[0] )) ;
  Dh = Dh  / (1. - dt*( ( ( - 1.0 ) ) / Tau[1] )) ;
- return 0;
+  return 0;
 }
  /*END CVODE*/
  static int states () {_reset=0;
@@ -712,3 +725,278 @@ static void _initlists() {
  _slist1[1] = &(h) - _p;  _dlist1[1] = &(Dh) - _p;
 _first = 0;
 }
+
+#if NMODL_TEXT
+static const char* nmodl_filename = "/home/yuz615/livingNeuralNetwork_inference/1_distribution/modfile/kdr.mod";
+static const char* nmodl_file_text = 
+  "NEURON { SUFFIX kdr }\n"
+  "NEURON { USEION k WRITE ik }         \n"
+  "ASSIGNED { ik }\n"
+  "\n"
+  "PARAMETER {\n"
+  "	erev 		= -75.  (mV)\n"
+  "	gmax 		= 0.015    (mho/cm2)\n"
+  "\n"
+  "  vrest     = 0\n"
+  "	exptemp		= 37\n"
+  "	maflag 		= 3\n"
+  "	malphaA 	= -0.016\n"
+  "	malphaB		= -5.0\n"
+  "	malphaV0	= 35.1\n"
+  "\n"
+  "	mbflag 		= 1\n"
+  "	mbetaA 		= 0.8: 0.25\n"
+  "	mbetaB		= -40 \n"
+  "	mbetaV0		= 20\n"
+  "	mq10		= 3\n"
+  "	mexp 		= 1\n"
+  "\n"
+  "	haflag 		= 0\n"
+  "	halphaA 	= 0\n"
+  "	halphaB		= 0\n"
+  "	halphaV0	= 0\n"
+  "	hbflag 		= 0\n"
+  "	hbetaA 		= 0\n"
+  "	hbetaB		= 0\n"
+  "	hbetaV0		= 0\n"
+  "	hq10		= 3\n"
+  "	hexp 		= 0\n"
+  "\n"
+  "	vmax 		= 100  (mV)\n"
+  "	vmin 		= -100 (mV)\n"
+  "} : end PARAMETER\n"
+  "\n"
+  ":::INCLUDE \"geneval_cvode.inc\"\n"
+  ":::realpath /home/yuz615/livingNeuralNetwork_inference/1_distribution/modfile/geneval_cvode.inc\n"
+  ": $Id: geneval_cvode.inc,v 1.6 2004/02/04 21:04:15 billl Exp $  \n"
+  "TITLE Kevins Cvode modified Generalized Hodgkin-Huxley eqn Channel Model \n"
+  "\n"
+  "COMMENT\n"
+  "\n"
+  "Each channel has activation and inactivation particles as in the original\n"
+  "Hodgkin Huxley formulation.  The activation particle mm and inactivation\n"
+  "particle hh go from on to off states according to kinetic variables alpha\n"
+  "and beta which are voltage dependent.\n"
+  "Allows exponential, sigmoid and linoid forms (flags 0,1,2)\n"
+  "See functions alpha() and beta() for details of parameterization\n"
+  "\n"
+  "ENDCOMMENT\n"
+  "\n"
+  "INDEPENDENT {t FROM 0 TO 1 WITH 1 (ms)}\n"
+  "\n"
+  "NEURON {\n"
+  "	RANGE gmax, g, i, vrest\n"
+  "	GLOBAL erev, Inf, Tau\n"
+  "} : end NEURON\n"
+  "\n"
+  "CONSTANT {\n"
+  "	  FARADAY = 96489.0	: Faraday's constant\n"
+  "	  R= 8.31441		: Gas constant\n"
+  "\n"
+  "} : end CONSTANT\n"
+  "\n"
+  "UNITS {\n"
+  "	(mA) = (milliamp)\n"
+  "	(mV) = (millivolt)\n"
+  "	(umho) = (micromho)\n"
+  "} : end UNITS\n"
+  "\n"
+  "COMMENT\n"
+  "** Parameter values should come from files specific to particular channels\n"
+  "\n"
+  "PARAMETER {\n"
+  "	erev 		= 0    (mV)\n"
+  "	gmax 		= 0    (mho/cm^2)\n"
+  "\n"
+  "	maflag 		= 0\n"
+  "	malphaA 	= 0\n"
+  "	malphaB		= 0\n"
+  "	malphaV0	= 0\n"
+  "	mbflag 		= 0\n"
+  "	mbetaA 		= 0\n"
+  "	mbetaB		= 0\n"
+  "	mbetaV0		= 0\n"
+  "	exptemp		= 0\n"
+  "	mq10		= 3\n"
+  "	mexp 		= 0\n"
+  "\n"
+  "	haflag 		= 0\n"
+  "	halphaA 	= 0\n"
+  "	halphaB		= 0\n"
+  "	halphaV0	= 0\n"
+  "	hbflag 		= 0\n"
+  "	hbetaA 		= 0\n"
+  "	hbetaB		= 0\n"
+  "	hbetaV0		= 0\n"
+  "	hq10		= 3\n"
+  "	hexp 		= 0\n"
+  "} : end PARAMETER\n"
+  "ENDCOMMENT\n"
+  "\n"
+  "PARAMETER {\n"
+  "  cao                (mM)\n"
+  "  cai                (mM)\n"
+  "  celsius			   (degC)\n"
+  "  dt 				   (ms)\n"
+  "  v 			       (mV)\n"
+  "}\n"
+  "\n"
+  "ASSIGNED {\n"
+  "	i (mA/cm^2)		\n"
+  "	g (mho/cm^2)\n"
+  "	Inf[2]		: 0 = m and 1 = h\n"
+  "	Tau[2]		: 0 = m and 1 = h\n"
+  "} : end ASSIGNED \n"
+  "\n"
+  "STATE { m h }\n"
+  "\n"
+  "INITIAL { \n"
+  " 	mh(v)\n"
+  "	m = Inf[0] h = Inf[1]\n"
+  "}\n"
+  "\n"
+  "BREAKPOINT {\n"
+  "\n"
+  "  LOCAL hexp_val, index, mexp_val, mexp2\n"
+  "\n"
+  "  SOLVE states METHOD cnexp\n"
+  "\n"
+  "  hexp_val = 1\n"
+  "  mexp_val = 1\n"
+  "\n"
+  "  : Determining h's exponent value\n"
+  "  if (hexp > 0) {\n"
+  "    FROM index=1 TO hexp {\n"
+  "      hexp_val = h * hexp_val\n"
+  "    }\n"
+  "  }\n"
+  "\n"
+  "  : Determining m's exponent value\n"
+  "  if (mexp > 0) {\n"
+  "    FROM index = 1 TO mexp {\n"
+  "      mexp_val = m * mexp_val\n"
+  "    }\n"
+  "  } else if (mexp<0) {\n"
+  "    mexp2=-mexp\n"
+  "    FROM index = 1 TO mexp2 {\n"
+  "      mexp_val = Inf[0] * mexp_val\n"
+  "    }\n"
+  "  }\n"
+  "\n"
+  "  :			       mexp			    hexp\n"
+  "  : Note that mexp_val is now = m      and hexp_val is now = h \n"
+  "  g = gmax * mexp_val * hexp_val\n"
+  "\n"
+  "  iassign()\n"
+  "} : end BREAKPOINT\n"
+  "\n"
+  ": ASSIGNMENT PROCEDURES\n"
+  ": Must be given by a user routines in parameters.multi\n"
+  ": E.G.:\n"
+  ":   PROCEDURE iassign () { i = g*(v-erev) ina=i }\n"
+  ":   PROCEDURE iassign () { i = g*ghkca(v) ica=i }\n"
+  "\n"
+  ":-------------------------------------------------------------------\n"
+  "\n"
+  "DERIVATIVE states {\n"
+  "  mh(v)\n"
+  "  m' = (-m + Inf[0]) / Tau[0] \n"
+  "  h' = (-h + Inf[1]) / Tau[1]\n"
+  "}\n"
+  "\n"
+  ":-------------------------------------------------------------------\n"
+  ": NOTE : 0 = m and 1 = h\n"
+  "PROCEDURE mh (v) {\n"
+  "  LOCAL a, b, j, qq10[2]\n"
+  "\n"
+  "  qq10[0] = mq10^((celsius-exptemp)/10.)	\n"
+  "  qq10[1] = hq10^((celsius-exptemp)/10.)	\n"
+  "\n"
+  "  : Calculater Inf and Tau values for h and m\n"
+  "  FROM j = 0 TO 1 {\n"
+  "    a = alpha (v, j)\n"
+  "    b = beta (v, j)\n"
+  "\n"
+  "    if (j==1 && hexp==0) { Tau[j] = 1. Inf[j] = 1.\n"
+  "    } else {\n"
+  "      Inf[j] = a / (a + b)\n"
+  "      Tau[j] = 1. / (a + b) / qq10[j]\n"
+  "    }\n"
+  "  }\n"
+  "} : end PROCEDURE mh (v)\n"
+  "\n"
+  ":-------------------------------------------------------------------\n"
+  "FUNCTION alpha(v,j) {\n"
+  "  LOCAL flag, A, B, V0\n"
+  "  if (j==1 && hexp==0) {\n"
+  "	  alpha = 0\n"
+  "  } else {\n"
+  "\n"
+  "     if (j == 1) {\n"
+  "	  A = halphaA B = halphaB V0 = halphaV0+vrest flag = haflag\n"
+  "     } else {\n"
+  "	  A = malphaA B = malphaB V0 = malphaV0+vrest flag = maflag\n"
+  "     }\n"
+  "\n"
+  "     if (flag == 1) { :  EXPONENTIAL\n"
+  "	 alpha = A*exp((v-V0)/B)	\n"
+  "     } else if (flag == 2) { :  SIGMOID\n"
+  "	 alpha = A/(exp((v-V0)/B)+1)\n"
+  "     } else if (flag == 3) { :  LINOID\n"
+  "	 if(v == V0) {\n"
+  "           alpha = A*B\n"
+  "         } else {\n"
+  "           alpha = A*(v-V0)/(exp((v-V0)/B)-1) }\n"
+  "     }\n"
+  "}\n"
+  "} : end FUNCTION alpha (v,j)\n"
+  "\n"
+  ":-------------------------------------------------------------------\n"
+  "FUNCTION beta (v,j) {\n"
+  "  LOCAL flag, A, B, V0\n"
+  "  if (j==1 && hexp==0) {\n"
+  "	  beta = 1\n"
+  "  } else {\n"
+  "			\n"
+  "     if (j == 1) {\n"
+  "	  A = hbetaA B = hbetaB V0 = hbetaV0+vrest flag = hbflag\n"
+  "     } else {\n"
+  "	  A = mbetaA B = mbetaB V0 = mbetaV0+vrest flag = mbflag\n"
+  "     }\n"
+  "\n"
+  "    if (flag == 1) { :  EXPONENTIAL\n"
+  "	 beta = A*exp((v-V0)/B)\n"
+  "     } else if (flag == 2) { :  SIGMOID\n"
+  "	 beta = A/(exp((v-V0)/B)+1)\n"
+  "     } else if (flag == 3) { :  LINOID\n"
+  "	 if(v == V0) {\n"
+  "            beta = A*B \n"
+  "         } else {\n"
+  "            beta = A*(v-V0)/(exp((v-V0)/B)-1) }\n"
+  "     }\n"
+  "}\n"
+  "} : end FUNCTION beta (v,j)\n"
+  "\n"
+  ":-------------------------------------------------------------------\n"
+  "FUNCTION FRT(temperature) {\n"
+  "	FRT = FARADAY * 0.001 / R / (temperature + 273.15)\n"
+  "} : end FUNCTION FRT (temperature)\n"
+  "\n"
+  ":-------------------------------------------------------------------\n"
+  " FUNCTION ghkca (v) { : Goldman-Hodgkin-Katz eqn\n"
+  "       LOCAL nu, efun\n"
+  "\n"
+  "       nu = v*2*FRT(celsius)\n"
+  "       if(fabs(nu) < 1.e-6) {\n"
+  "               efun = 1.- nu/2.\n"
+  "       } else {\n"
+  "               efun = nu/(exp(nu)-1.) }\n"
+  "\n"
+  "       ghkca = -FARADAY*2.e-3*efun*(cao - cai*exp(nu))\n"
+  " } : end FUNCTION ghkca()\n"
+  ":::end INCLUDE geneval_cvode.inc\n"
+  "\n"
+  "PROCEDURE iassign () { i = g*(v-erev) ik=i }\n"
+  ":* cal from calRT03 in ~/nrniv/place/mod/parameters.multi\n"
+  ;
+#endif

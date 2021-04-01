@@ -1,4 +1,4 @@
-/* Created by Language version: 6.2.0 */
+/* Created by Language version: 7.7.0 */
 /* VECTORIZED */
 #define NRN_VECTORIZED 1
 #include <stdio.h>
@@ -78,6 +78,15 @@ extern void hoc_register_limits(int, HocParmLimits*);
 extern void hoc_register_units(int, HocParmUnits*);
 extern void nrn_promote(Prop*, int, int);
 extern Memb_func* memb_func;
+ 
+#define NMODL_TEXT 1
+#if NMODL_TEXT
+static const char* nmodl_file_text;
+static const char* nmodl_filename;
+extern void hoc_reg_nmodl_text(int, const char*);
+extern void hoc_reg_nmodl_filename(int, const char*);
+#endif
+
  extern Prop* nrn_point_prop_;
  static int _pointtype;
  static void* _hoc_create_pnt(_ho) Object* _ho; { void* create_point_process();
@@ -152,7 +161,7 @@ static void _ode_matsol(_NrnThread*, _Memb_list*, int);
  static void _ode_matsol_instance1(_threadargsproto_);
  /* connect range variables in _p that hoc is supposed to know about */
  static const char *_mechanism[] = {
- "6.2.0",
+ "7.7.0",
 "ExpSyn1",
  "tau",
  "e",
@@ -209,6 +218,10 @@ extern void _cvode_abstol( Symbol**, double*, int);
 	 _hoc_create_pnt, _hoc_destroy_pnt, _member_func);
  _mechtype = nrn_get_mechtype(_mechanism[1]);
      _nrn_setdata_reg(_mechtype, _setdata);
+ #if NMODL_TEXT
+  hoc_reg_nmodl_text(_mechtype, nmodl_file_text);
+  hoc_reg_nmodl_filename(_mechtype, nmodl_filename);
+#endif
   hoc_register_prop_size(_mechtype, 8, 3);
   hoc_register_dparam_semantics(_mechtype, 0, "area");
   hoc_register_dparam_semantics(_mechtype, 1, "pntproc");
@@ -218,7 +231,7 @@ extern void _cvode_abstol( Symbol**, double*, int);
  pnt_receive[_mechtype] = _net_receive;
  pnt_receive_size[_mechtype] = 1;
  	hoc_register_var(hoc_scdoub, hoc_vdoub, hoc_intfunc);
- 	ivoc_help("help ?1 ExpSyn1 /home/yuz615/frontierNS20/4distribution/x86_64/expsyn1.mod\n");
+ 	ivoc_help("help ?1 ExpSyn1 /home/yuz615/livingNeuralNetwork_inference/1_distribution/modfile/expsyn1.mod\n");
  hoc_register_limits(_mechtype, _hoc_parm_limits);
  hoc_register_units(_mechtype, _hoc_parm_units);
  }
@@ -243,7 +256,7 @@ static int _ode_spec1(_threadargsproto_);
 }
  static int _ode_matsol1 (double* _p, Datum* _ppvar, Datum* _thread, _NrnThread* _nt) {
  Dg = Dg  / (1. - dt*( ( - 1.0 ) / tau )) ;
- return 0;
+  return 0;
 }
  /*END CVODE*/
  static int state (double* _p, Datum* _ppvar, Datum* _thread, _NrnThread* _nt) { {
@@ -453,4 +466,56 @@ _first = 0;
 
 #if defined(__cplusplus)
 } /* extern "C" */
+#endif
+
+#if NMODL_TEXT
+static const char* nmodl_filename = "/home/yuz615/livingNeuralNetwork_inference/1_distribution/modfile/expsyn1.mod";
+static const char* nmodl_file_text = 
+  "NEURON {\n"
+  "	POINT_PROCESS ExpSyn1\n"
+  "	RANGE tau, e, i\n"
+  "	NONSPECIFIC_CURRENT i\n"
+  "}\n"
+  "\n"
+  "UNITS {\n"
+  "	(nA) = (nanoamp)\n"
+  "	(mV) = (millivolt)\n"
+  "	(uS) = (microsiemens)\n"
+  "}\n"
+  "\n"
+  "PARAMETER {\n"
+  "	tau = 0.1 (ms) <1e-9,1e9>\n"
+  "	e = 0	(mV)\n"
+  "}\n"
+  "\n"
+  "ASSIGNED {\n"
+  "	v (mV)\n"
+  "	i (nA)\n"
+  "}\n"
+  "\n"
+  "STATE {\n"
+  "	g (uS)\n"
+  "}\n"
+  "\n"
+  "INITIAL {\n"
+  "	g=0\n"
+  "}\n"
+  "\n"
+  "BREAKPOINT {\n"
+  "	SOLVE state METHOD cnexp\n"
+  "	i = g*(v - e)\n"
+  "}\n"
+  "\n"
+  "DERIVATIVE state {\n"
+  "	g' = -g/tau\n"
+  "}\n"
+  "\n"
+  "NET_RECEIVE(weight (uS)) {\n"
+  "	g = g + weight\n"
+  "	printf(\"%lf \\n\", g)\n"
+  "}\n"
+  "\n"
+  "\n"
+  "\n"
+  ;
 #endif
