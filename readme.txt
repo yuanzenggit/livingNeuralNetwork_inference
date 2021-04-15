@@ -6,14 +6,19 @@ Requirement:
 
 Reproduce the result:
 1) Computational model parameters fitting experiment under: 1_distirbution 
-	 -> python3 ./1_distirbution/distribution.py log.txt to generate the raw data for Fig 4(a)
-	 -> python3 ./1_distirbution/normalFit.py to generate the raw data for Fig 4(b)
+	 cd 1_distirbution
+	 -> python3 distribution.py log.txt to generate the raw data for Fig 4(a)
+	 -> python3 normalFit.py to generate the raw data for Fig 4(b)
 
 2) Accuracy comparison between biophysical and computational model experiment under: 2_accuracyCompare 
-	 -> python3 ./2_accuracyCompare/result/plot/graph.py to generate Fig 4(c)
+	 cd 2_accuracyCompare/result/plot
+	 -> python3 graph.py to generate Fig 7
+	    comment out line 8 and line 10 in graph.py to generate 4(c)
 	 -> To generate the raw data
-	  -> python3 ./2_accuracyCompare/tensorflow_compModel.py to get computational model result
-	  -> ./2_accuracyCompare/biophy/run.sh to get biophysical model result
+	  cd 2_accuracyCompare 
+	  -> python3 tensorflow_compModel.py to get computational model result
+	  cd 2_accuracyCompare/biophy
+	  -> ./run.sh to get biophysical model result
 
 3) Algorithm and network optimization experiment under: 3_optimization
 	 -> python3 ./3_optimization/result/sparse/graph.py to generate Fig 5(a)

@@ -7,28 +7,30 @@ import sys
 
 # Set report level//////////////////////////////////////////////////
 os.environ["TF_CPP_MIN_LOG_LEVEL"]="3"
-old_v = tf.logging.get_verbosity()
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 
 # Parameters///////////////////////////////////////////////////////
-preprocessingOn, estimatorOn, adlrOn, privatewOn, seed, sparsity = 0, 0, 0, 1, 2, 40
-display_step = 0  #0: print each figure result, 1: print epoch result
-training_epochs, batch_size = 1, 1
+preprocessingOn, estimatorOn, adlrOn, privatewOn, seed, sparsity = 0, 0, 0, 1, 0, 40
+display_step = 1  #0: print each figure result, 1: print epoch result
+training_epochs, batch_size = 100, 1
 train_cap, test_cap = 60000, 10000
-datalen_train, datalen_test, dim = 100, 100, 14 
+datalen_train, datalen_test, dim = 100, 100, 14
 n_input, n_hidden_1, n_classes = dim*dim, 100, 10
 Vth_mean, Vth_std = 0.0066, 0.0019 
 w1_mean, w1_std = 0.0009, 0.0009 
-w2_mean, w2_std = 0.0009, 0.0009
-learning_rate1, learning_rate2, decay = 0.0001, 0.01, 0 
-estimatorL, estimatorU = 0, 0.0075
+w2_mean, w2_std = 0.0009, 0.0009 
+learning_rate1, learning_rate2, decay = 0.0001, 0.01, 0
+estimatorL, estimatorU = 0.0057, 0.0075
 expect_ones=20.0
 last_accuracy=0.0
 
 # Import MNIST data////////////////////////////////////////////////
 if preprocessingOn:
 		# Preprocessing
-		name_train='../MNIST/pre_processing/'+'S_train_ones'+str(expect_ones)+'_dim'+str(dim)+'_datalength'+str(train_cap)
-		name_test='../MNIST/pre_processing/'+'S_test_ones'+str(expect_ones)+'_dim'+str(dim)+'_datalength'+str(test_cap)
+		name_train='../MNIST/'+'S_train_ones'+str(expect_ones)+'_dim'+str(dim)+'_datalength'+str(train_cap)
+		name_test='../MNIST/'+'S_test_ones'+str(expect_ones)+'_dim'+str(dim)+'_datalength'+str(test_cap)
+
 else:
 		# Original compression
 		name_train='../MNIST/input196_training.mat'
@@ -56,14 +58,14 @@ print ("actual num of ones:", np.count_nonzero(images1)/float(datalen_train))
 # Parameters///////////////////////////////////////////////////////
 
 # tf Graph Input//////////////////////////////////////////////////////
-x = tf.placeholder(tf.float64, [n_input, None]) 
-y = tf.placeholder(tf.float64, [n_classes, None]) 
+x = tf.compat.v1.placeholder(tf.float64, [n_input, None]) 
+y = tf.compat.v1.placeholder(tf.float64, [n_classes, None]) 
 
 np.random.seed(seed)
 if privatewOn:
 		w1 = tf.clip_by_value(w1_mean+np.random.randn(n_hidden_1, n_input) * w1_std, 0, float('Inf'))
 else:
-		w1 = tf.clip_by_value(w1_mean+np.random.randn(n_hidden_1, n_input) * w1_std, 0, 0.0018)
+		w1 = tf.clip_by_value(w1_mean+np.random.randn(n_hidden_1, n_input) * w1_std, 0, 0.0014)
 Min_w1, Max_w1 = w1 * 0.5, w1 * 2.0                  
 np.random.seed(seed)
 w2 = w2_mean+np.random.randn(n_classes, n_hidden_1) * w2_std
@@ -121,7 +123,7 @@ out_softmax = tf.nn.softmax(tf.transpose(layer2))
 
 pred = tf.argmax(out_softmax,1)
 label = tf.argmax(tf.transpose(y),1)
-cost = -tf.reduce_sum(tf.transpose(y) * tf.log(tf.clip_by_value(out_softmax,1e-200,float('Inf'))), 1)
+cost = -tf.reduce_sum(tf.transpose(y) * tf.math.log(tf.clip_by_value(out_softmax,1e-200,float('Inf'))), 1)
 
 # Back propagation
 grad_layer2 = tf.add(tf.transpose(out_softmax), -y)
@@ -137,21 +139,21 @@ grad_w1 = tf.matmul(grad_layer1, tf.transpose(x))
 if privatewOn:
 		constraintW = weight_constraint(weights['h1'] - learning_rate['h1'] * grad_w1, Min_w1, Max_w1)
 else:		
-		constraintW = tf.clip_by_value(weights['h1'] - learning_rate['h1'] * grad_w1, 0, 0.0018)
+		constraintW = tf.clip_by_value(weights['h1'] - learning_rate['h1'] * grad_w1, 0, 0.0014)
 w1_new = weights['h1'].assign(constraintW)
 
 spike=tf.math.count_nonzero(layer1b)
 # Run /////////////////////////////////////////////////////////////////
-init = tf.global_variables_initializer()
-with tf.Session(config=tf.ConfigProto(allow_soft_placement=True,gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.05))) as sess:
+init = tf.compat.v1.global_variables_initializer()
+with tf.compat.v1.Session(config=tf.compat.v1.ConfigProto(allow_soft_placement=True,gpu_options = tf.compat.v1.GPUOptions(per_process_gpu_memory_fraction=0.05))) as sess:
 		sess.run(init)
 
 		# Training
 		for epoch in range(training_epochs):
 				correct_num = 0.
+				correct_num1 = 0.
 				avg_cost = 0
 				avg_ones = 0
-				correct_num1 = 0.
 				avg_cost1 = 0
 				for i in range(datalen_train):
 						
@@ -159,11 +161,9 @@ with tf.Session(config=tf.ConfigProto(allow_soft_placement=True,gpu_options = tf
 						batch_xs, batch_ys = images_train[i].reshape(n_input,1), indexs_train[i].reshape(10,1)
 						
 						# Run optimization op (backprop) 
-						#_, _, c, p, t, s= sess.run([w1_new, w2_new, cost, pred, label, spike],
-						#														 feed_dict={x: batch_xs,y: batch_ys})
-						
-						c, p, t, s= sess.run([cost, pred, label, spike],
+						_, _, c, s, p, t= sess.run([w1_new, w2_new, cost, spike, pred, label],
 																				 feed_dict={x: batch_xs,y: batch_ys})
+						
 
 						# Compute average loss
 						avg_cost += c / datalen_train
@@ -173,9 +173,9 @@ with tf.Session(config=tf.ConfigProto(allow_soft_placement=True,gpu_options = tf
 						if p==t:
 								correct_num+=1
 								if display_step==0:
-									print ("predict/label:", p, t, "correct", correct_num, "spike", s)
+									print ("predict/label:", p, t, "correct", correct_num)
 						elif display_step==0:
-								print ("predict/label:", p, t, "wrong", correct_num, "spike", s)
+								print ("predict/label:", p, t, "wrong", correct_num)
 						
 				# Accuracy for each epoch
 				accuracy = correct_num / datalen_train
@@ -186,14 +186,6 @@ with tf.Session(config=tf.ConfigProto(allow_soft_placement=True,gpu_options = tf
 								data = f.write(" avg_cost: %f " % avg_cost)
 								data = f.write(" avg_ones: %f " % avg_ones)
 								data = f.write(" accuracy: %f\n" % accuracy)
-
-		 		#Test model
-				#correct_prediction = tf.equal(pred, label)
-				#accur = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
-				#accuracy=accur.eval({x: images_train.transpose(), y: indexs_train.transpose()})
-				#with open("./result/" + str(param), "a") as f:
-				#		data = f.write("test  epochs: %d " % epoch)
-				#		data = f.write(" accuracy: %f\n" % accuracy)
 				
 				############################################################################################
 				for i in range(datalen_test):
@@ -238,4 +230,3 @@ with tf.Session(config=tf.ConfigProto(allow_soft_placement=True,gpu_options = tf
 								ll1, ll2 = sess.run([lr1, lr2])
 						last_accuracy=accuracy
 				
-
